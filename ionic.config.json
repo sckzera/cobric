@@ -1,0 +1,7 @@
+{
+  "name": "cobric",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
