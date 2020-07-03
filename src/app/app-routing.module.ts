@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'login-visitante',
+    loadChildren: () => import('./login-visitante/login-visitante.module').then( m => m.LoginVisitantePageModule)
   },
+
 ];
 
 @NgModule({

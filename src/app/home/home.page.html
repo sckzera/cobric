@@ -1,13 +1,13 @@
 
 <ion-content [fullscreen]="true">
-  <ion-img src="../assets/img_home.png"></ion-img>
+  <ion-img src="../assets/maoazul.png"></ion-img>
   <div class="titulo">
     <ion-text>Congresso Brasileiro de Iniciação Cientifica</ion-text> 
    </div>
   <div id="container"> 
     <div id="buttons">
     <ion-button expand="round">Avaliador</ion-button>   
-    <ion-button expand="round">Visitante</ion-button>
+    <ion-button [routerLink]="['/login-visitante']" expand="round">Visitante</ion-button>
     <p></p>
     <ion-button class="ranking" slot="trophy-outline" expand="round"> Ranking Popular
       <ion-icon slot="start" name="trophy-outline"></ion-icon>   

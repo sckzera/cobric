@@ -1,0 +1,31 @@
+.container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 75%;
+    margin: 0 auto;
+    z-index: 2;
+    top: 5%;
+
+}
+ion-content {
+    --background: #6eb1ee;
+}
+  ion-slides {
+    height: 100%;
+    position: absolute;
+    .slide-inner {
+        width: 75%;
+        color: #fff;
+        border-radius: 10px;
+
+        ion-item {
+            --background: rgba(255, 255, 255, 0.2);
+            --border-radius: 10px;
+
+            ion-input {
+                --color: #fff;
+            }
+        }
+    }
+}
