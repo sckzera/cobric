@@ -26,11 +26,21 @@
 }
 
 
-
-ion-content {
-  --background: #6eb1ee;
-  ion-toolbar{
-    --background: #6eb1ee;
-  }
+#buttons{
+  margin-top: 125%;
 }
 
+#image{
+  src: url("resources/icon.png");
+}
+
+ion-content {
+  --background: white;
+  ion-button{
+    --background:#6eb1ee;
+      width: 90%;
+      margin-left: 2px;
+      margin-right: 2px;
+      color: black;
+  }
+}
