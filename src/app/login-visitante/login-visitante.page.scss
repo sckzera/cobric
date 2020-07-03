@@ -10,10 +10,11 @@
 }
 ion-content {
     --background: #6eb1ee;
+    position: center;
 }
   ion-slides {
     height: 100%;
-    position: absolute;
+   
     .slide-inner {
         width: 75%;
         color: #fff;
@@ -27,5 +28,39 @@ ion-content {
                 --color: #fff;
             }
         }
+        ion-checkbox{
+            margin-left: 4px;
+            margin-left: 4px;
+        }
     }
-}
+
+    }
+.classTelefone{
+    width: 85%;
+    position: center;
+        width: center;
+        text-align: center;
+         width: 85%;
+    #labelTelefone{
+        font-size: small;
+        
+    }
+    }
+    .classRA{
+        width: 85%;
+        position: center;
+        width: center;
+        text-align: center;
+        #labelRA{
+         
+            font-size: small;
+        }
+    }
+.classRadioAluno{
+        position: center;
+        #labelAluno{
+            font-size: small;
+        }
+    }
+
+    

@@ -1,14 +1,13 @@
-<ion-content>
+<ion-content class="swiper-no-swiping">
   <div class="container">
-
-  <ion-segment (ionChange)="segmentChanged($event)" value="login">
-    <ion-segment-button value="login">
-      <ion-label>Login</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="register">
-      <ion-label>Cadastro</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+    <ion-segment (ionChange)="segmentChanged($event)" value="login">
+      <ion-segment-button value="login">
+        <ion-label>Login</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="register">
+        <ion-label>Cadastro</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </div>
 
   <ion-slides>
@@ -16,15 +15,15 @@
       <div class="slide-inner ion-padding">
         <span>Login</span>
 
-        <ion-item  lines="none">
+        <ion-item lines="none">
           <ion-input type="email" placeholder="E-mail" ></ion-input>
         </ion-item>
         <p></p>
-        <ion-item  lines="none">
+        <ion-item lines="none">
           <ion-input type="password" placeholder="Senha"></ion-input>
         </ion-item>
-
-        <ion-button  (click)="login()" expand="block">
+        <p></p>
+        <ion-button (click)="login()" expand="block">
           Entrar
         </ion-button>
       </div>
@@ -34,17 +33,36 @@
       <div class="slide-inner ion-padding">
         <span>Cadastro</span>
 
-        <ion-item  lines="none">
+        <ion-item lines="none">
           <ion-input type="text" placeholder="Nome"></ion-input>
         </ion-item>
         <p></p>
-        <ion-item  lines="none">
-          <ion-input type="email" placeholder="E-mail" ></ion-input>
+        <ion-item lines="none">
+          <ion-input type="email" placeholder="E-mail"></ion-input>
         </ion-item>
         <p></p>
-        <ion-item  lines="none">
+        <ion-item lines="none">
           <ion-input type="password" placeholder="Senha"></ion-input>
         </ion-item>
+        <p></p>
+        <div class="classRadioAluno">
+        <p></p>
+        <span id="labelAluno">É Aluno Unisanta ?</span>
+        <p></p>
+       <span id="labelnao" style="color:green">Nao</span> <ion-toggle id="radioAluno" (ionChange) = "checkboxRadio()" color="primary"></ion-toggle> <span id="labelsim">Sim</span>
+      </div>
+        <div id="classTelefone" class="classTelefone">
+          <span id="labelTelefone">Digite seu Telefone com DDD</span>
+          <ion-item  lines="none">
+            <ion-input id="telefone" maxlength=11 inputmode="numeric" placeholder="13988888888"></ion-input>
+          </ion-item>
+        </div>
+        <div hidden="true" id="classRA" class="classRA">
+          <span id="labelRA">Digite seu RA</span>
+          <ion-item  lines="none">
+            <ion-input id="ra" maxlength=6 inputmode="numeric" placeholder="RA"></ion-input>
+          </ion-item>
+        </div>
 
         <ion-button (click)="register()" expand="block">
           Cadastrar
