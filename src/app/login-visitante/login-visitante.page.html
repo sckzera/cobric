@@ -1,7 +1,7 @@
 <ion-content class="swiper-no-swiping">
   <div class="container">
     <ion-segment (ionChange)="segmentChanged($event)" value="login">
-      <ion-segment-button value="login">
+      <ion-segment-button id="idLogin" value="login">
         <ion-label>Login</ion-label>
       </ion-segment-button>
       <ion-segment-button value="register">
@@ -9,18 +9,17 @@
       </ion-segment-button>
     </ion-segment>
   </div>
-
   <ion-slides>
     <ion-slide>
       <div class="slide-inner ion-padding">
         <span>Login</span>
 
         <ion-item lines="none">
-          <ion-input type="email" placeholder="E-mail" ></ion-input>
+          <ion-input [(ngModel)]="emailLogin" type="email" placeholder="E-mail" ></ion-input>
         </ion-item>
         <p></p>
         <ion-item lines="none">
-          <ion-input type="password" placeholder="Senha"></ion-input>
+          <ion-input [(ngModel)]="passwordLogin" type="password" placeholder="Senha"></ion-input>
         </ion-item>
         <p></p>
         <ion-button (click)="login()" expand="block">
@@ -34,15 +33,15 @@
         <span>Cadastro</span>
 
         <ion-item lines="none">
-          <ion-input type="text" placeholder="Nome"></ion-input>
+          <ion-input type="text" placeholder="Nome" [(ngModel)]="nomeregistrar"></ion-input>
         </ion-item>
         <p></p>
         <ion-item lines="none">
-          <ion-input type="email" placeholder="E-mail"></ion-input>
+          <ion-input type="email" placeholder="E-mail" [(ngModel)]="emailregistrar"></ion-input>
         </ion-item>
         <p></p>
         <ion-item lines="none">
-          <ion-input type="password" placeholder="Senha"></ion-input>
+          <ion-input type="password" placeholder="Senha" [(ngModel)]="senharegistrar"></ion-input>
         </ion-item>
         <p></p>
         <div class="classRadioAluno">
@@ -54,17 +53,17 @@
         <div id="classTelefone" class="classTelefone">
           <span id="labelTelefone">Digite seu Telefone com DDD</span>
           <ion-item  lines="none">
-            <ion-input id="telefone" maxlength=11 inputmode="numeric" placeholder="13988888888"></ion-input>
+            <ion-input id="telefone" maxlength=11 inputmode="numeric" [(ngModel)]="telefone" placeholder="13988888888"></ion-input>
           </ion-item>
         </div>
         <div hidden="true" id="classRA" class="classRA">
           <span id="labelRA">Digite seu RA</span>
           <ion-item  lines="none">
-            <ion-input id="ra" maxlength=6 inputmode="numeric" placeholder="RA"></ion-input>
+            <ion-input id="ra" maxlength=6 inputmode="numeric" [(ngModel)]="ra" placeholder="RA"></ion-input>
           </ion-item>
         </div>
 
-        <ion-button (click)="register()" expand="block">
+        <ion-button (click)="cadastrar()" expand="block">
           Cadastrar
         </ion-button>
       </div>

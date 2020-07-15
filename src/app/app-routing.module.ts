@@ -10,9 +10,14 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'login-visitante',
     loadChildren: () => import('./login-visitante/login-visitante.module').then( m => m.LoginVisitantePageModule)
+  },
+  {
+    path: 'menu-visitante',
+    loadChildren: () => import('./menu-visitante/menu-visitante.module').then( m => m.MenuVisitantePageModule)
   },
 
 ];

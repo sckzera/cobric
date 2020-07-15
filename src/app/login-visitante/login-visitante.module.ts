@@ -8,12 +8,16 @@ import { LoginVisitantePageRoutingModule } from './login-visitante-routing.modul
 
 import { LoginVisitantePage } from './login-visitante.page';
 
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginVisitantePageRoutingModule
+    LoginVisitantePageRoutingModule,
+    HttpClientModule,
   ],
   declarations: [LoginVisitantePage]
 })
