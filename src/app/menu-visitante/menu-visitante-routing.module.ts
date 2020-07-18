@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: MenuVisitantePage
+  },
+  {
+    path: 'localizacao',
+    loadChildren: () => import('./localizacao/localizacao.module').then( m => m.LocalizacaoPageModule)
   }
 ];
 

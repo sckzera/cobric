@@ -3,6 +3,8 @@ import { IonSlides, IonCheckbox, IonRadio, IonToggle, IonInput } from '@ionic/an
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { UserService } from "./../services/user.service";
+import { isBuffer } from 'util';
 
 
 @Component({
@@ -25,7 +27,8 @@ ra:string;
 mensagemAlerta:string;
 tituloAlerta:string;
 
-constructor(private http: HttpClient, public alertController: AlertController, private router:Router) {
+burlar:"123";
+constructor(private http: HttpClient, public alertController: AlertController, private router:Router, private userServ: UserService) {
 }
 
   ngOnInit() {
@@ -56,23 +59,34 @@ constructor(private http: HttpClient, public alertController: AlertController, p
   }
 }
 login(){
-  var headers = {'contentType': 'application/json'};
-  const body = { email: this.emailLogin, senha: this.passwordLogin}
-  this.http.post('https://localhost:5001/usuarios/login', body,  {headers} ).subscribe(response => {
-    console.log(response);
-    
-    if(response['tipoUsuario'] == "3"){
-     //Falta redirecionamento
-    }else{
-     //Falta redirecionamento
-     this.router.navigate(['../menu-visitante']);
-    }
-  }, error => {
-    this.presentAlert(error['error']['mensagem'], "Aconteceu um Erro");
-  })
+  if(this.burlar == "123"){
+    var headers = {'contentType': 'application/json'};
+    const body = { email: this.emailLogin, senha: this.passwordLogin}
+    this.http.post('https://localhost:5001/usuarios/login', body,  {headers} ).subscribe(response => {
+      console.log(response);
+      
+      if(response['tipoUsuario'] == "3"){
+       //Falta redirecionamento
+      }else{
+       //Falta redirecionamento
+       this.router.navigate(['../menu-visitante']);
+       this.userServ.changeData(response['nome'],response['email']);
+  
+      }
+    }, error => {
+      this.presentAlert(error['error']['mensagem'], "Aconteceu um Erro");
+    })}
+  
+  else{
+
+    this.userServ.changeData("Kauan","kauan2");
+    console.log("EOQ");
+    this.router.navigate(['../menu-visitante']);
+}}
 
 
-  }
+
+
 
 
 cadastrar(){

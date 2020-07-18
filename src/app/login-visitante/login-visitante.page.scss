@@ -62,5 +62,16 @@ ion-content {
             font-size: small;
         }
     }
-
+.botaovoltar{
+    position: absolute;
+    left: 0px;
+    right: 350px;
+    width: 12%;
+    margin: 0 auto;
+    z-index: 2;
+    top: 5%;
+    background: #00050e23;
+     padding: 0px;
+     border-radius: 15px;
+}
     
