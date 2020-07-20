@@ -18,12 +18,12 @@ export class LocalizacaoPage {
   infoWindows: any = [];
   markers: any = [
     {
-        title: "Universidade Santa Cecilia",
-        
+        title: "Universidade Santa Cecilia",      
         latitude: "-23.963976",
         longitude: "-46.321455"
     }
   ];
+
 
   constructor(private router:Router) {}
 

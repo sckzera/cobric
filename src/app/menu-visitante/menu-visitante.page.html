@@ -1,14 +1,16 @@
-<ion-header>
+<ion-header class="swiper-no-swiping">
   <ion-toolbar>
     <ion-title class="csstitulo"> Bem vindo {{nomeGlobal | uppercase}}.</ion-title>
     <button class="cssbutao" (click)="voltarMenu()"><ion-icon name="arrow-back-outline"></ion-icon></button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div>
+<ion-content class="swiper-no-swiping">
+  <div class="divSuperior">
   <ion-button expand="round" [routerLink]="['/menu-visitante/informacoes']">Informações</ion-button> 
   <ion-button expand="round" [routerLink]="['/menu-visitante/localizacao']">Localização</ion-button> 
+ </div>
+ <div class="divInferior">
   <ion-button expand="round">Gradeamento</ion-button> 
   <ion-button expand="round" [routerLink]="['/menu-visitante/pesquisar']">Votar</ion-button> 
   </div>

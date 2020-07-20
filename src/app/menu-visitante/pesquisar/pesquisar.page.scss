@@ -1,13 +1,5 @@
 ion-content {
     --background: #6db0ee;
-    ion-button{
-        --background:#f5f9fd;
-          width: 48%;
-          margin-left: 2px;
-          margin-right: 2px;
-          color: black;
-          
-      }
     ion-header{
         --background: #3f87f3;
         color: black;
@@ -17,9 +9,7 @@ ion-content {
 }
 ion-toolbar{
     --background: #3f87f3;
-    color: black;
-
-}
+    color: black;}
 
 .csstitulo{
     margin: 0 auto;
@@ -40,9 +30,25 @@ ion-toolbar{
     width: 12%;
     margin: 0 auto;
     z-index: 2;
-    top: 40%;
+    top: 2%;
     background: #00050e23;
      padding: 0px;
      border-radius: 15px;
 
+}
+.cssBusca{
+    margin-top: 5%;
+    color: #00050e;
+}
+ion-content{
+    ion-list{
+        ion-item{
+            --background: #6db0ee;
+            button{
+                background: #4c8bc7;
+                border-radius: 10px;
+                width: 100%;
+            }
+        }
+    }
 }

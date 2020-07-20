@@ -59,7 +59,7 @@ constructor(private http: HttpClient, public alertController: AlertController, p
   }
 }
 login(){
-  if(this.burlar == "123"){
+  if(this.burlar != "123"){
     var headers = {'contentType': 'application/json'};
     const body = { email: this.emailLogin, senha: this.passwordLogin}
     this.http.post('https://localhost:5001/usuarios/login', body,  {headers} ).subscribe(response => {

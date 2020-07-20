@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="divTitulo">{{tituloGlobal.titulo | uppercase}}</div>
+    <div><button class="cssbutao" (click)="voltarMenu()"><ion-icon name="arrow-back-outline"></ion-icon></button></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="divCodigo">
+    <text>Resumo</text>
+    <p></p>
+    {{tituloGlobal.codigo | uppercase}}
+    <p></p>
+  </div>
+  <div class="divAutores">
+    <text>Autor(es)</text>
+    <p></p>
+    {{tituloGlobal.autores | uppercase}}
+    <p></p>
+  </div>
+  <div class="divOrientador">
+    <text>Orientador(es)</text>
+    <p></p>
+    {{tituloGlobal.orientador | uppercase}}
+    <p></p>
+  </div>
+</ion-content>

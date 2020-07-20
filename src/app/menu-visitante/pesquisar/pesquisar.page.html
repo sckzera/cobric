@@ -16,16 +16,16 @@
     }
   </script>
   <ion-toolbar>
-    <ion-searchbar showCancelButton="focus" placeholder="Digite o Titulo do Trabalho" [(ngModel)]="queryText" 
-    (ionInput)="filterTrabalho($event)" clearinput></ion-searchbar>
     <button class="cssbutao" (click)="voltarMenu()"><ion-icon name="arrow-back-outline"></ion-icon></button>
+    <ion-searchbar class="cssBusca" placeholder="Digite o Titulo do Trabalho" [(ngModel)]="queryText" 
+    (ionInput)="filterTrabalho($event)" clearinput></ion-searchbar> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
     <ion-item no-lines *ngFor="let trabalho of trabalhos">
-      <h3>{{trabalho.titulo}}</h3>
+      <button (click)="SelecionaTrabalho(trabalho)">{{trabalho.titulo}}</button>
     </ion-item>
   </ion-list>
 </ion-content>
