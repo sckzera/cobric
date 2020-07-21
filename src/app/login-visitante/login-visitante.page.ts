@@ -78,9 +78,7 @@ login(){
     })}
   
   else{
-
     this.userServ.changeData("Kauan","kauan2");
-    console.log("EOQ");
     this.router.navigate(['../menu-visitante']);
 }}
 

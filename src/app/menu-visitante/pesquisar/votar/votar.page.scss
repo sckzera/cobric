@@ -1,12 +1,55 @@
 ion-content {
     --background: #6db0ee;
-    ion-button{
-        --background:#f5f9fd;
-          width: 48%;
-          margin-left: 2px;
-          margin-right: 2px;
+    ion-toolbar.divCodigo{
+        margin: 0 auto;
+        --background: #00b7ff63;
+           // width: 300px;
+            padding: 0px;
+            text-align: center;
+            color: black;
+            font-size: 15px;
+            border-radius: 10px;
+            text{
+                font-size: 18px;
+            }
+    }
+    ion-toolbar.divAutores{
+        margin: 0 auto;
+        --background: #00b7ff63;
+           // width: 300px;
+            padding: 0px;
+            text-align: center;
+            color: black;
+            border-radius: 15px;
+            font-size: 15px; 
+            margin-top: 15%;
+            text{
+                font-size: 18px;
+            }
+    }
+    ion-toolbar.divOrientador{
+        margin: 0 auto;
+        --background: #00b7ff63;
+        // width: 300px;
+         padding: 0px;
+         text-align: center;
+         color: black;
+         font-size: 15px;
+         border-radius: 10px;
+         margin-top: 10%;
+         text{
+             font-size: 18px;
+         }
+    }
+    
+    ion-button.btnVotar{
+        --background:#ffffff;
+       
+        text-align: center;
+          width: 80%;
+          margin: center ;
           color: black;
-          
+          margin: 30px;
       }
     ion-header{
         --background: #3f87f3;
@@ -53,36 +96,4 @@ ion-toolbar{
     color: black;
     border-radius: 15px;
 }
-.divCodigo{
-    margin: 0 auto;
-   // width: 300px;
-    padding: 0px;
-    text-align: center;
-    color: black;
-    font-size: 15px;
-    text{
-        font-size: 22px;
-    }
-}
-.divAutores{
-    margin: 0 auto;
-   // width: 300px;
-    padding: 0px;
-    text-align: center;
-    color: black;
-    font-size: 15px;
-    text{
-        font-size: 22px;
-    }
-}
-.divOrientador{
-    margin: 0 auto;
-   // width: 300px;
-    padding: 0px;
-    text-align: center;
-    color: black;
-    font-size: 15px;
-    text{
-        font-size: 22px;
-    }
-}
+

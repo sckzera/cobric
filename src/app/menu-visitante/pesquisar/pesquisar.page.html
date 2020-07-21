@@ -17,14 +17,14 @@
   </script>
   <ion-toolbar>
     <button class="cssbutao" (click)="voltarMenu()"><ion-icon name="arrow-back-outline"></ion-icon></button>
-    <ion-searchbar class="cssBusca" placeholder="Digite o Titulo do Trabalho" [(ngModel)]="queryText" 
+    <ion-searchbar  class="cssBusca" placeholder="Digite o Titulo do Trabalho" [(ngModel)]="queryText" 
     (ionInput)="filterTrabalho($event)" clearinput></ion-searchbar> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item no-lines *ngFor="let trabalho of trabalhos">
+  <ion-list lines="full">
+    <ion-item *ngFor="let trabalho of trabalhos">
       <button (click)="SelecionaTrabalho(trabalho)">{{trabalho.titulo}}</button>
     </ion-item>
   </ion-list>
