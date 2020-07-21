@@ -18,6 +18,10 @@ const routes: Routes = [
   },  {
     path: 'pesquisar',
     loadChildren: () => import('./pesquisar/pesquisar.module').then( m => m.PesquisarPageModule)
+  },
+  {
+    path: 'gradeamento',
+    loadChildren: () => import('./gradeamento/gradeamento.module').then( m => m.GradeamentoPageModule)
   }
 
 ];
