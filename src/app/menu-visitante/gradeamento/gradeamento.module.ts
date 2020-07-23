@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { GradeamentoPageRoutingModule } from './gradeamento-routing.module';
 
 import { GradeamentoPage } from './gradeamento.page';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GradeamentoPageRoutingModule
+    GradeamentoPageRoutingModule,
+    HttpClientModule
   ],
   declarations: [GradeamentoPage]
 })
