@@ -24,4 +24,5 @@ export class MenuVisitantePage implements OnInit {
     this.emailGlobal = null;
     this.router.navigate(['../login-visitante']);
   }
+
 }

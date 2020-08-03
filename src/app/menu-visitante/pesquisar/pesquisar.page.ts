@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import _ from 'lodash';
 import { UserService } from "../../services/user.service";
 import { HttpClient } from '@angular/common/http';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pesquisar',
@@ -13,7 +14,8 @@ export class PesquisarPage implements OnInit {
 trabalhos: Array<{titulo: string, codigo: string, autores:string, orientador:string, data:string}>
 alltrabalhos:any;
 queryText:string;
-  constructor(private router:Router, private userServ: UserService, private http: HttpClient) { 
+date: any = new Date().getDate().toString();
+  constructor(private router:Router, private userServ: UserService, private http: HttpClient, public alertController: AlertController) { 
     
     this.queryText = '';
     const headers = {'accept': 'application/json'}
@@ -25,11 +27,22 @@ queryText:string;
       console.log("ERRO", error)
     });
  //this.alltrabalhos = this.trabalhos;
-                                    }
+                                   }
 
   ngOnInit() {
+    console.log(this.date);
   }
-
+  async presentAlert(mensagemAlerta, tituloAlerta ) {
+   
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: tituloAlerta,
+      message: mensagemAlerta,
+      buttons: ['OK']
+    });
+    
+    await alert.present();
+  }
 
   filterTrabalho(cid:any){
   let val = cid.target.value;
@@ -48,7 +61,16 @@ queryText:string;
     this.router.navigate(['../menu-visitante']);
   }
   SelecionaTrabalho(seila: any){
+    console.log("Minha DATA " + seila.data);
+    console.log("SISTEMA "+ this.date);
+    console.log(seila);
+    if(seila.data.includes(this.date)){
     this.userServ.changeData2(seila);
     this.router.navigate(['/menu-visitante/pesquisar/votar']);
+    }
+    
+    else{
+      this.presentAlert("Pois esse trabalho ainda não foi apresentado", "Voce não pode votar no grupo:" + seila.titulo);
+    }
   }
 }
