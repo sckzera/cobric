@@ -32,10 +32,13 @@ constructor(private http: HttpClient, public alertController: AlertController, p
 }
 
   ngOnInit() {
+    // Setando para quando iniciar, os RA e Tipo de Telefone vir Nulo obrigando o cadastramento de um ou outro.
     this.ra = null;
     this.telefone = null;
+    // Setando o tipo de usuario ao iniciar, já que o primario é Não Aluno.
     this.tipousuario = "2";
   }
+  // Metodo de Alerta
   async presentAlert(mensagemAlerta, tituloAlerta ) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -47,7 +50,7 @@ constructor(private http: HttpClient, public alertController: AlertController, p
     await alert.present();
    
   }
-  
+  // Evento para Transição entre LOGIN e Cadastrar "Animação".
   segmentChanged(event: any){
  
   if(event.detail.value ==="register"){
@@ -58,17 +61,18 @@ constructor(private http: HttpClient, public alertController: AlertController, p
    this.slides.slidePrev();
   }
 }
+// Sistema de Login
 login(){
-  if(this.burlar == "123"){
+  if(this.burlar != "123"){
     var headers = {'contentType': 'application/json'};
     const body = { email: this.emailLogin, senha: this.passwordLogin}
-    this.http.post('https://localhost:5001/usuarios/login', body,  {headers} ).subscribe(response => {
+    this.http.post('https://localhost:5050/usuarios/login', body,  {headers} ).subscribe(response => {
       console.log(response);
       
       if(response['tipoUsuario'] == "3"){
-       //Falta redirecionamento
+        this.presentAlert("Utilize o Menu Avaliador para logar corretamente.", "Caro Avaliador");
       }else{
-       //Falta redirecionamento
+       // Caso o Login conferir, redirecionando, e salvando os dados.
        this.router.navigate(['../menu-visitante']);
        this.userServ.changeData(response['nome'],response['email']);
   
@@ -86,7 +90,7 @@ login(){
 
 
 
-
+// Sistema de Cadastror - Se for 1 é Aluno, 2 Não aluno
 cadastrar(){
   if(this.toggle.checked === true)
   this.tipousuario = "1";
@@ -95,7 +99,7 @@ cadastrar(){
 
  var headers = {'contentType': 'application/json','tipoUsuario': this.tipousuario};
  const body = { nome: this.nomeregistrar, email: this.emailregistrar, senha: this.senharegistrar, ra: this.ra, telefone: this.telefone }
- this.http.post('https://localhost:5001/usuarios/cadastro', body,  {headers} ).subscribe(response => {
+ this.http.post('https://localhost:5000/usuarios/cadastro', body,  {headers} ).subscribe(response => {
   this.presentAlert("Usuario Criado com Sucesso.", "Bem Vindo")
   this.slides.slidePrev();
   document.getElementById("idLogin").click();
@@ -103,7 +107,7 @@ cadastrar(){
   this.presentAlert(error['error']['mensagem'], "Aconteceu um Erro");
  })
 }
-
+// Metodo para alterar as views, caso seja aluno ou nao.
   checkboxRadio() {
     var elemento3 = document.getElementById("classTelefone");
     var elemento = document.getElementById("classRA");

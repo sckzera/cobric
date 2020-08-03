@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'menu-visitante',
     loadChildren: () => import('./menu-visitante/menu-visitante.module').then( m => m.MenuVisitantePageModule)
+  },  {
+    path: 'rankingpopular',
+    loadChildren: () => import('./rankingpopular/rankingpopular.module').then( m => m.RankingpopularPageModule)
   },
+
 
 ];
 

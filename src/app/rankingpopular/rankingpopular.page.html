@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <button class="cssbutao" (click)="voltarMenu()"><ion-icon name="arrow-back-outline"></ion-icon></button>
+    <ion-searchbar  class="cssBusca" placeholder="Digite o Titulo do Trabalho" [(ngModel)]="queryText" 
+    (ionInput)="filterTrabalho($event)" clearinput></ion-searchbar> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let trabalho of trabalhos">
+      <ion-item >
+      <ion-col>
+        {{trabalho.tituloTrabalho}}
+      </ion-col>
+      <ion-col>
+        {{trabalho.totalVotos}}
+      </ion-col>
+    </ion-item>
+    </ion-row>
+  </ion-grid>
+</ion-content>

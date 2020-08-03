@@ -15,22 +15,22 @@ trabalhos: Array<{titulo: string, codigo: string, autores:string, orientador:str
 alltrabalhos:any;
 queryText:string;
 date: any = new Date().getDate().toString();
+
   constructor(private router:Router, private userServ: UserService, private http: HttpClient, public alertController: AlertController) { 
     
     this.queryText = '';
     const headers = {'accept': 'application/json'}
-    this.http.get<any>('https://localhost:5001/gradeamentos' , { headers }).subscribe(data => {
+    this.http.get<any>('https://localhost:5051/gradeamentos' , { headers }).subscribe(data => {
         this.trabalhos = data;
         this.alltrabalhos = this.trabalhos; 
-        //console.log(this.trabalhos);
        }, error => {
-      console.log("ERRO", error)
-    });
- //this.alltrabalhos = this.trabalhos;
-                                   }
+        this.presentAlert("Ao carregar o dados, reabra o Aplicativo.", "Aconteceu um Erro:");
+    }); }
 
   ngOnInit() {
-    console.log(this.date);
+    if(this.date == "1" || "2" || "3" || "4" || "5" || "6" || "7" || "8" || "9"){
+this.date = "0"+this.date;
+    }
   }
   async presentAlert(mensagemAlerta, tituloAlerta ) {
    
@@ -60,17 +60,19 @@ date: any = new Date().getDate().toString();
   voltarMenu(){
     this.router.navigate(['../menu-visitante']);
   }
-  SelecionaTrabalho(seila: any){
-    console.log("Minha DATA " + seila.data);
+  // VERIFICA SE PODE DEPENDENDO DA DATA, PODE OU NAO VOLTAR
+  SelecionaTrabalho(dataTrabalho: any){
+    
+    console.log("Minha DATA " + dataTrabalho.data);
     console.log("SISTEMA "+ this.date);
-    console.log(seila);
-    if(seila.data.includes(this.date)){
-    this.userServ.changeData2(seila);
+   // console.log(dataTrabalho);
+    if(dataTrabalho.data.includes(this.date)){
+    this.userServ.changeData2(dataTrabalho);
     this.router.navigate(['/menu-visitante/pesquisar/votar']);
     }
     
     else{
-      this.presentAlert("Pois esse trabalho ainda não foi apresentado", "Voce não pode votar no grupo:" + seila.titulo);
+      this.presentAlert("Pois esse trabalho ainda não foi apresentado", "Voce não pode votar no grupo:" + dataTrabalho.titulo);
     }
   }
 }
