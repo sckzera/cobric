@@ -11,15 +11,17 @@
 ion-content {
     --background: #6eb1ee;
     position: center;
+    .divTop{
+        margin-top: 20%;
+    }
 }
   ion-slides {
     height: 100%;
-   
     .slide-inner {
         width: 75%;
         color: #fff;
         border-radius: 10px;
-
+        
         ion-item {
             --background: rgba(255, 255, 255, 0.2);
             --border-radius: 10px;
