@@ -64,8 +64,6 @@ login(){
     var headers = {'contentType': 'application/json'};
     const body = { email: this.emailLogin, senha: this.passwordLogin}
     this.http.post('https://localhost:5050/usuarios/login', body,  {headers} ).subscribe(response => {
-      console.log(response);
-      
       if(response['tipoUsuario'] == "3"){
        // this.presentAlert("Utilize o Menu Avaliador para logar corretamente.", "Caro Avaliador");
        // this.router.navigate(['../menu-avaliador']);

@@ -32,6 +32,10 @@ tituloTrabalho:string;
     this.tituloTrabalho = this.tituloGlobal["titulo"];
     this.idGradeamento = this.tituloGlobal["idGradeamento"];
    this.idUsuario = this.vetorUser;
+   if(this.idUsuario=="{ERRO}" || this.idGradeamento =="{ERRO}" || this.tituloTrabalho =="{ERRO}"){
+    this.presentAlert("Faça o Login novamente.", "Aconteceu um Erro");
+    this.router.navigate(['../login-visitante']);
+   }
   }
   voltarMenu(){
 
