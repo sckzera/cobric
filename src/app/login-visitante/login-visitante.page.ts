@@ -26,8 +26,6 @@ telefone:string;
 ra:string;
 mensagemAlerta:string;
 tituloAlerta:string;
-
-burlar:"123";
 constructor(private http: HttpClient, public alertController: AlertController, private router:Router, private userServ: UserService) {
 }
 
@@ -63,32 +61,25 @@ constructor(private http: HttpClient, public alertController: AlertController, p
 }
 // Sistema de Login
 login(){
-  if(this.burlar != "123"){
     var headers = {'contentType': 'application/json'};
     const body = { email: this.emailLogin, senha: this.passwordLogin}
     this.http.post('https://localhost:5050/usuarios/login', body,  {headers} ).subscribe(response => {
       console.log(response);
       
       if(response['tipoUsuario'] == "3"){
-        this.presentAlert("Utilize o Menu Avaliador para logar corretamente.", "Caro Avaliador");
+       // this.presentAlert("Utilize o Menu Avaliador para logar corretamente.", "Caro Avaliador");
+       // this.router.navigate(['../menu-avaliador']);
+       // this.userServ.changeData(response['nome'],response['idUsuario']);
       }else{
        // Caso o Login conferir, redirecionando, e salvando os dados.
        this.router.navigate(['../menu-visitante']);
-       this.userServ.changeData(response['nome'],response['email']);
+       this.userServ.changeData(response['nome'],response['idUsuario']);
   
       }
     }, error => {
       this.presentAlert(error['error']['mensagem'], "Aconteceu um Erro");
-    })}
-  
-  else{
-    this.userServ.changeData("Kauan","kauan2");
-    this.router.navigate(['../menu-visitante']);
-}}
-
-
-
-
+    })
+  }
 
 // Sistema de Cadastror - Se for 1 é Aluno, 2 Não aluno
 cadastrar(){
@@ -99,7 +90,7 @@ cadastrar(){
 
  var headers = {'contentType': 'application/json','tipoUsuario': this.tipousuario};
  const body = { nome: this.nomeregistrar, email: this.emailregistrar, senha: this.senharegistrar, ra: this.ra, telefone: this.telefone }
- this.http.post('https://localhost:5000/usuarios/cadastro', body,  {headers} ).subscribe(response => {
+ this.http.post('https://localhost:5050/usuarios/cadastro', body,  {headers} ).subscribe(response => {
   this.presentAlert("Usuario Criado com Sucesso.", "Bem Vindo")
   this.slides.slidePrev();
   document.getElementById("idLogin").click();

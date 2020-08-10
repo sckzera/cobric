@@ -17,7 +17,16 @@ export class GradeamentoPage implements OnInit {
    
   constructor(private router:Router, private http: HttpClient, public alertController: AlertController, public loadingController: LoadingController) {
     this.queryText = '';
-    this.presentLoading();   
+    this.presentLoading("start");
+    const headers = {'accept': 'application/json'}
+    this.http.get<any>('https://localhost:5051/gradeamentos' , { headers }).subscribe(data => {
+        this.trabalhos = data;
+        this.alltrabalhos = this.trabalhos; 
+        
+       }, error => {
+      this.presentAlert("Aconteceu um Erro ao consultar os dados!", "Nos desculpe");
+      this.router.navigate(['../menu-visitante']);
+    });
  }
  // Metodo de Alerta.
  async presentAlert(mensagemAlerta, tituloAlerta ) {
@@ -31,22 +40,17 @@ export class GradeamentoPage implements OnInit {
   await alert.present();
 }
 // Metodo chamado para carregar os Dados do Gradeamento.
-async presentLoading() {
+async presentLoading(apresentacao:any) {
   const loading = await this.loadingController.create({
     cssClass: 'my-custom-class',
-    message: 'Estamos consultando...',
-    duration: 2000
+    message: 'Estamos Consultando os dados...',
+    duration: 3500
   });
-  await loading.present();
-  const headers = {'accept': 'application/json'}
-    this.http.get<any>('https://localhost:5051/gradeamentos' , { headers }).subscribe(data => {
-        this.trabalhos = data;
-        this.alltrabalhos = this.trabalhos; 
-        
-       }, error => {
-      this.presentAlert("Aconteceu um Erro ao consultar os dados!", "Nos desculpe");
-      this.router.navigate(['../menu-visitante']);
-    });
+if(apresentacao=="start"){
+  await loading.present();}
+else{
+  await loading.dismiss();
+}
 }
 
   ngOnInit() {
@@ -68,3 +72,4 @@ async presentLoading() {
     this.router.navigate(['../menu-visitante']);
   }
 }
+

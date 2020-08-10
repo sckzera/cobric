@@ -18,6 +18,15 @@ export class RankingpopularPage implements OnInit {
   constructor(private router:Router, private http: HttpClient, public alertController: AlertController, public loadingController: LoadingController) {
     this.queryText = '';
     this.presentLoading();
+    const headers = {'accept': 'application/json'}
+  this.http.get<any>('https://localhost:5001/votos' , { headers }).subscribe(data => {
+      this.trabalhos = data;
+      this.alltrabalhos = this.trabalhos; 
+      
+     }, error => {
+    this.presentAlert("Aconteceu um Erro ao consultar os dados!", "Nos desculpe");
+    this.router.navigate(['./home']);
+  });
  }
  async presentAlert(mensagemAlerta, tituloAlerta ) {
    
@@ -37,15 +46,7 @@ async presentLoading() {
     message: 'Estamos consultando...',
     duration: 3000
   });
-  const headers = {'accept': 'application/json'}
-  this.http.get<any>('https://localhost:5052/votos' , { headers }).subscribe(data => {
-      this.trabalhos = data;
-      this.alltrabalhos = this.trabalhos; 
-      
-     }, error => {
-    this.presentAlert("Aconteceu um Erro ao consultar os dados!", "Nos desculpe");
-    this.router.navigate(['./home']);
-  });
+  
   await loading.present();
 }
 

@@ -2,7 +2,7 @@ ion-content {
     --background: #6db0ee;
     ion-toolbar.divCodigo{
         margin: 0 auto;
-        --background: #3f87f371;
+        --background: #ffffffbd;
            // width: 300px;
             padding: 0px;
             text-align: center;
@@ -16,7 +16,7 @@ ion-content {
     }
     ion-toolbar.divAutores{
         margin: 0 auto;
-        --background: #3f87f371;
+        --background: #ffffffbd;
            // width: 300px;
             padding: 0px;
             text-align: center;
@@ -30,7 +30,7 @@ ion-content {
     }
     ion-toolbar.divOrientador{
         margin: 0 auto;
-        --background: #3f87f371;
+        --background: #ffffffbd;
         // width: 300px;
          padding: 0px;
          text-align: center;
@@ -56,13 +56,20 @@ ion-content {
         --background: #3f87f3;
         color: black;
         margin-left: auto;
+        ion-toolbar{
+            --background: #3f87f3;
+        }
       
     }
 }
-ion-toolbar{
+ion-header{
     --background: #3f87f3;
     color: black;
-
+    margin-left: auto;
+    ion-toolbar{
+        --background: #3f87f3;
+    }
+  
 }
 
 .csstitulo{
@@ -90,6 +97,7 @@ ion-toolbar{
      border-radius: 15px;
 }
 .divTitulo{
+    background: #ffffffbd;
     margin: 0 auto;
    // width: 300px;
     padding: 0px;

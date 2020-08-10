@@ -1,11 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <div class="divTitulo">{{tituloGlobal.titulo | uppercase}}</div>
     <div><button class="cssbutao" (click)="voltarMenu()"><ion-icon name="arrow-back-outline"></ion-icon></button></div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-toolbar class="divTitulo">
+    <div>
+      <text>Titulo:</text>
+      <p></p>
+      {{tituloGlobal.titulo | uppercase}}
+      <p></p>
+    </div>
+  </ion-toolbar>
 <ion-toolbar class="divCodigo">
   <div>
     <ion-header>

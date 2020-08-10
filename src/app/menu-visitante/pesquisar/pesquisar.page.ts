@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { UserService } from "../../services/user.service";
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pesquisar',
@@ -16,8 +17,8 @@ alltrabalhos:any;
 queryText:string;
 date: any = new Date().getDate().toString();
 
-  constructor(private router:Router, private userServ: UserService, private http: HttpClient, public alertController: AlertController) { 
-    
+  constructor(private router:Router, private userServ: UserService, private http: HttpClient, public alertController: AlertController, public loadingController: LoadingController) { 
+    this.presentLoading("start");
     this.queryText = '';
     const headers = {'accept': 'application/json'}
     this.http.get<any>('https://localhost:5051/gradeamentos' , { headers }).subscribe(data => {
@@ -25,12 +26,15 @@ date: any = new Date().getDate().toString();
         this.alltrabalhos = this.trabalhos; 
        }, error => {
         this.presentAlert("Ao carregar o dados, reabra o Aplicativo.", "Aconteceu um Erro:");
-    }); }
+    }); 
+    this.presentLoading("stop");
+
+  }
 
   ngOnInit() {
-    if(this.date == "1" || "2" || "3" || "4" || "5" || "6" || "7" || "8" || "9"){
-this.date = "0"+this.date;
-    }
+   // if(this.date == "1" || "2" || "3" || "4" || "5" || "6" || "7" || "8" || "9"){
+//this.date = "0"+this.date;
+  //  }
   }
   async presentAlert(mensagemAlerta, tituloAlerta ) {
    
@@ -63,16 +67,28 @@ this.date = "0"+this.date;
   // VERIFICA SE PODE DEPENDENDO DA DATA, PODE OU NAO VOLTAR
   SelecionaTrabalho(dataTrabalho: any){
     
-    console.log("Minha DATA " + dataTrabalho.data);
-    console.log("SISTEMA "+ this.date);
-   // console.log(dataTrabalho);
-    if(dataTrabalho.data.includes(this.date)){
+   // console.log("Minha DATA " + dataTrabalho.data);
+  //  console.log("SISTEMA "+ this.date);
+  //  if(dataTrabalho.data.includes(this.date)){
     this.userServ.changeData2(dataTrabalho);
     this.router.navigate(['/menu-visitante/pesquisar/votar']);
-    }
+  //  }
     
-    else{
+   /* else{
       this.presentAlert("Pois esse trabalho ainda não foi apresentado", "Voce não pode votar no grupo:" + dataTrabalho.titulo);
-    }
+    }*/
+  }
+
+  async presentLoading(a:any) {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Estamos consultado os dados...',
+      duration: 5000
+    });
+  if(a=="start"){
+    await loading.present();}
+  else{
+    await loading.onDidDismiss();
+  }
   }
 }
