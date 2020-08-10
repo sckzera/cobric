@@ -42,6 +42,20 @@ ion-content {
              font-size: 18px;
          }
     }
+    ion-toolbar.divTitulo{
+        margin: 0 auto;
+        --background: #ffffffbd;
+        // width: 300px;
+         padding: 0px;
+         text-align: center;
+         color: black;
+         font-size: 15px;
+         border-radius: 10px;
+         margin-top: 3%;
+         text{
+             font-size: 18px;
+         }
+    }
     
     ion-button.btnVotar{
         --background:#ffffff;
