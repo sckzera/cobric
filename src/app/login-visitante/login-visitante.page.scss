@@ -8,6 +8,20 @@
     top: 5%;
 
 }
+.divErro{
+    color: red;
+    font-size: x-small;
+}
+.divButton{
+    background-color:  #3880ff;
+    width: 100%;
+    border-radius: 7px;
+    height: 40px;
+    font-family: Arial;
+    color: white;
+    font-size: medium;
+    margin-top: 10px;
+}
 ion-content {
     --background: #6eb1ee;
     position: center;
@@ -38,18 +52,20 @@ ion-content {
 
     }
 .classTelefone{
-    width: 85%;
+    margin-top: 10px;
+    width: 100%;
     position: center;
         width: center;
         text-align: center;
-         width: 85%;
+         
     #labelTelefone{
         font-size: small;
         
     }
     }
     .classRA{
-        width: 85%;
+        margin-top: 10px;
+        width: 100%;
         position: center;
         width: center;
         text-align: center;

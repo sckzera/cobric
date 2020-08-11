@@ -10,6 +10,8 @@ import { LoginVisitantePage } from './login-visitante.page';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
@@ -18,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule,
     LoginVisitantePageRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   declarations: [LoginVisitantePage]
 })

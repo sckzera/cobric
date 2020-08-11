@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { UserService } from "./../services/user.service";
-import { isBuffer } from 'util';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -26,7 +26,10 @@ telefone:string;
 ra:string;
 mensagemAlerta:string;
 tituloAlerta:string;
-constructor(private http: HttpClient, public alertController: AlertController, private router:Router, private userServ: UserService) {
+registerForm: FormGroup;
+submitted = false;
+constructor(private http: HttpClient, public alertController: AlertController, private router:Router, private userServ: UserService, private formBuilder: FormBuilder) {
+ 
 }
 
   ngOnInit() {
@@ -35,7 +38,16 @@ constructor(private http: HttpClient, public alertController: AlertController, p
     this.telefone = null;
     // Setando o tipo de usuario ao iniciar, já que o primario é Não Aluno.
     this.tipousuario = "2";
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      telefone: ['', [Validators.pattern("^[0-9]*$")]],
+      ra: ['']
+      
+  });
   }
+  get f() { return this.registerForm.controls; }
   // Metodo de Alerta
   async presentAlert(mensagemAlerta, tituloAlerta ) {
     const alert = await this.alertController.create({
@@ -48,6 +60,16 @@ constructor(private http: HttpClient, public alertController: AlertController, p
     await alert.present();
    
   }
+  onSubmit() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
+    }
+    else{
+this.cadastrar();
+    }
+}
   // Evento para Transição entre LOGIN e Cadastrar "Animação".
   segmentChanged(event: any){
  
@@ -63,7 +85,7 @@ constructor(private http: HttpClient, public alertController: AlertController, p
 login(){
     var headers = {'contentType': 'application/json'};
     const body = { email: this.emailLogin, senha: this.passwordLogin}
-    this.http.post('https://localhost:5050/usuarios/login', body,  {headers} ).subscribe(response => {
+    this.http.post('https://usuariobackend.azurewebsites.net/usuarios/login', body,  {headers} ).subscribe(response => {
       if(response['tipoUsuario'] == "3"){
        // this.presentAlert("Utilize o Menu Avaliador para logar corretamente.", "Caro Avaliador");
        // this.router.navigate(['../menu-avaliador']);
@@ -88,7 +110,7 @@ cadastrar(){
 
  var headers = {'contentType': 'application/json','tipoUsuario': this.tipousuario};
  const body = { nome: this.nomeregistrar, email: this.emailregistrar, senha: this.senharegistrar, ra: this.ra, telefone: this.telefone }
- this.http.post('https://localhost:5050/usuarios/cadastro', body,  {headers} ).subscribe(response => {
+ this.http.post('https://usuariobackend.azurewebsites.net/usuarios/cadastro', body,  {headers} ).subscribe(response => {
   this.presentAlert("Usuario Criado com Sucesso.", "Bem Vindo")
   this.slides.slidePrev();
   document.getElementById("idLogin").click();

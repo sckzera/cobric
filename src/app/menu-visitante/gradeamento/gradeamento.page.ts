@@ -19,7 +19,7 @@ export class GradeamentoPage implements OnInit {
     this.queryText = '';
     this.presentLoading("start");
     const headers = {'accept': 'application/json'}
-    this.http.get<any>('https://localhost:5051/gradeamentos' , { headers }).subscribe(data => {
+    this.http.get<any>('https://gradeamentobackend.azurewebsites.net/gradeamentos' , { headers }).subscribe(data => {
         this.trabalhos = data;
         this.alltrabalhos = this.trabalhos; 
         

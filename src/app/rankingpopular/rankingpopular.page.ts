@@ -19,7 +19,7 @@ export class RankingpopularPage implements OnInit {
     this.queryText = '';
     this.presentLoading();
     const headers = {'accept': 'application/json'}
-  this.http.get<any>('https://localhost:5001/votos' , { headers }).subscribe(data => {
+  this.http.get<any>('https://votacaobackend.azurewebsites.net/votos' , { headers }).subscribe(data => {
       this.trabalhos = data;
       this.alltrabalhos = this.trabalhos; 
       

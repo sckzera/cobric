@@ -55,10 +55,10 @@ tituloTrabalho:string;
   votar(){
       var headers = {'contentType': 'application/json'};
       const body = { idGradeamento: this.idGradeamento, idUsuario: this.idUsuario}
-      this.http.post('https://localhost:5001/votacao', body,  {headers} ).subscribe(response => {
+      this.http.post('https://votacaobackend.azurewebsites.net/votacao', body,  {headers} ).subscribe(response => {
         var headers = {'contentType': 'application/json'};
       const body = { idGradeamento: this.idGradeamento, totalVotos: this.totalVotos, tituloTrabalho: this.tituloTrabalho}
-      this.http.post('https://localhost:5001/votos', body,  {headers} ).subscribe(response => {
+      this.http.post('https://votacaobackend.azurewebsites.net/votos', body,  {headers} ).subscribe(response => {
         this.presentAlert(this.tituloTrabalho , "Voce votou no grupo abaixo, Obrigado!");
       }, error => {
         this.presentAlert("Reabra o aplicativo e tente novamente.", "Aconteceu um Erro Inesperado");

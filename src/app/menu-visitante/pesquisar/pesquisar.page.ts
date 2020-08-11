@@ -21,7 +21,7 @@ date: any = new Date().getDate().toString();
     this.presentLoading("start");
     this.queryText = '';
     const headers = {'accept': 'application/json'}
-    this.http.get<any>('https://localhost:5051/gradeamentos' , { headers }).subscribe(data => {
+    this.http.get<any>('https://gradeamentobackend.azurewebsites.net/gradeamentos' , { headers }).subscribe(data => {
         this.trabalhos = data;
         this.alltrabalhos = this.trabalhos; 
        }, error => {

@@ -35,42 +35,60 @@
     <ion-slide>
       <div class="slide-inner ion-padding">
         <span>Cadastro</span>
-
-        <ion-item lines="none">
-          <ion-input type="text" placeholder="Nome" [(ngModel)]="nomeregistrar"></ion-input>
-        </ion-item>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
+          <div class="form-group">
+            <ion-item lines="none">             
+          <ion-input type="text" formControlName="firstName" placeholder="Nome" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" [(ngModel)]="nomeregistrar"></ion-input>           
+        </ion-item><div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                  <div class="divErro" *ngIf="f.firstName.errors.required">Nome é obrigatorio</div>
+              </div>
+          </div>
+          <p></p> 
+          <div class="form-group">
+            <ion-item lines="none">
+              <ion-input type="text" formControlName="email" placeholder="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" [(ngModel)]="emailregistrar" ></ion-input>
+            </ion-item>
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div class="divErro" *ngIf="f.email.errors.required">Email é obrigatorio</div>
+                  <div class="divErro" *ngIf="f.email.errors.pattern">Digite um e-mail valido</div>
+              </div>
+          </div>
+          <p></p>
+          <div class="form-group">
+            <ion-item lines="none">
+              <ion-input type="password" formControlName="password" placeholder="Senha" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [(ngModel)]="senharegistrar" ></ion-input>
+            </ion-item>
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div class="divErro" *ngIf="f.password.errors.required">Senha é obrigatorio</div>
+                  <div class="divErro" *ngIf="f.password.errors.minlength">Digite uma senha com mais de 6 caracteres</div>
+              </div>
+          </div>       
+      <div class="classRadioAluno">
         <p></p>
-        <ion-item lines="none">
-          <ion-input type="email" placeholder="E-mail" [(ngModel)]="emailregistrar"></ion-input>
-        </ion-item>
-        <p></p>
-        <ion-item lines="none">
-          <ion-input type="password" placeholder="Senha" [(ngModel)]="senharegistrar"></ion-input>
-        </ion-item>
-        <p></p>
-        <div class="classRadioAluno">
-        <p></p>
-        <span id="labelAluno">É Aluno Unisanta ?</span>
+        <span id="labelAluno">Voce é aluno UNISANTA ?</span>
         <p></p>
        <span id="labelnao" style="color:green">Nao</span> <ion-toggle id="radioAluno" (ionChange) = "checkboxRadio()" color="primary"></ion-toggle> <span id="labelsim">Sim</span>
       </div>
         <div id="classTelefone" class="classTelefone">
           <span id="labelTelefone">Digite seu Telefone com DDD</span>
           <ion-item  lines="none">
-            <ion-input id="telefone" maxlength=11 inputmode="numeric" [(ngModel)]="telefone" placeholder="13988888888"></ion-input>
+            <ion-input formControlName="telefone" id="telefone" maxlength=11 inputmode="numeric" [(ngModel)]="telefone" placeholder="13988888888"></ion-input>
           </ion-item>
+          <div *ngIf="submitted && f.telefone.errors" class="invalid-feedback">
+            <div class="divErro" *ngIf="f.telefone.errors.pattern">Digite apenas numeros</div>
+        </div>
         </div>
         <div hidden="true" id="classRA" class="classRA">
           <span id="labelRA">Digite seu RA</span>
           <ion-item  lines="none">
-            <ion-input id="ra" maxlength=6 inputmode="numeric" [(ngModel)]="ra" placeholder="RA"></ion-input>
+            <ion-input formControlName="ra" id="ra" maxlength=6 inputmode="numeric" [(ngModel)]="ra" placeholder="RA"></ion-input>
           </ion-item>
         </div>
-
-        <ion-button (click)="cadastrar()" expand="block">
-          Cadastrar
-        </ion-button>
-      </div>
+        <div class="form-group">
+        <button class="divButton">Cadastrar</button>
+        </div>
+      </form>
+      </div>   
     </ion-slide>
   </ion-slides>
 </div>
