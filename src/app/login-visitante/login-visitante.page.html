@@ -26,6 +26,9 @@
           <ion-input [(ngModel)]="passwordLogin" type="password" placeholder="Senha"></ion-input>
         </ion-item>
         <p></p>
+        <ion-label id="labelconectando2" hidden="true">Voce está logando...</ion-label>
+        <p></p>
+        <ion-spinner id="labelconectando" hidden="true"></ion-spinner>
         <ion-button (click)="login()" expand="block">
           Entrar
         </ion-button>

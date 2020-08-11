@@ -18,10 +18,10 @@ queryText:string;
 date: any = new Date().getDate().toString();
 
   constructor(private router:Router, private userServ: UserService, private http: HttpClient, public alertController: AlertController, public loadingController: LoadingController) { 
-    this.presentLoading("start");
     this.queryText = '';
     const headers = {'accept': 'application/json'}
     this.http.get<any>('https://gradeamentobackend.azurewebsites.net/gradeamentos' , { headers }).subscribe(data => {
+      this.presentLoading("start");
         this.trabalhos = data;
         this.alltrabalhos = this.trabalhos; 
        }, error => {

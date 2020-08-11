@@ -17,9 +17,9 @@ export class GradeamentoPage implements OnInit {
    
   constructor(private router:Router, private http: HttpClient, public alertController: AlertController, public loadingController: LoadingController) {
     this.queryText = '';
-    this.presentLoading("start");
     const headers = {'accept': 'application/json'}
     this.http.get<any>('https://gradeamentobackend.azurewebsites.net/gradeamentos' , { headers }).subscribe(data => {
+      this.presentLoading("start");
         this.trabalhos = data;
         this.alltrabalhos = this.trabalhos; 
         

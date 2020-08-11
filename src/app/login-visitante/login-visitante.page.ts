@@ -29,7 +29,6 @@ tituloAlerta:string;
 registerForm: FormGroup;
 submitted = false;
 constructor(private http: HttpClient, public alertController: AlertController, private router:Router, private userServ: UserService, private formBuilder: FormBuilder) {
- 
 }
 
   ngOnInit() {
@@ -83,6 +82,10 @@ this.cadastrar();
 }
 // Sistema de Login
 login(){
+  var elemento = document.getElementById("labelconectando");
+  elemento.hidden = false;
+  var elemento2 = document.getElementById("labelconectando2");
+  elemento2.hidden = false;
     var headers = {'contentType': 'application/json'};
     const body = { email: this.emailLogin, senha: this.passwordLogin}
     this.http.post('https://usuariobackend.azurewebsites.net/usuarios/login', body,  {headers} ).subscribe(response => {
@@ -98,6 +101,8 @@ login(){
       }
     }, error => {
       this.presentAlert(error['error']['mensagem'], "Aconteceu um Erro");
+      elemento.hidden = true;
+      elemento2.hidden = true;
     })
   }
 

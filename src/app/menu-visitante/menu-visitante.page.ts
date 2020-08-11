@@ -27,7 +27,7 @@ export class MenuVisitantePage implements OnInit {
   voltarMenu(){
     this.nomeGlobal = null;
     this.emailGlobal = null;
-    this.router.navigate(['../login-visitante']);
+    this.router.navigate(['../home']);
   }
   async presentAlert(mensagemAlerta, tituloAlerta ) {
    
