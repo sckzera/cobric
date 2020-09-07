@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'rankingpopular',
     loadChildren: () => import('./rankingpopular/rankingpopular.module').then( m => m.RankingpopularPageModule)
   },
+  {
+    path: 'login-avaliador',
+    loadChildren: () => import('./login-avaliador/login-avaliador.module').then( m => m.LoginAvaliadorPageModule)
+  },
 
 
 ];

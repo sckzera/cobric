@@ -1,0 +1,37 @@
+
+<ion-content class="swiper-no-swiping">
+  <div><button class="botaovoltar" [routerLink]="['/home']"><ion-icon name="arrow-back-outline"></ion-icon></button></div>
+  <div class="container">
+    <ion-segment (ionChange)="segmentChanged($event)" value="login">
+      <ion-segment-button id="idLogin" value="login">
+        <ion-label>Avaliador</ion-label>
+      </ion-segment-button>
+      
+    </ion-segment>
+  </div>
+  <div class="divTop">
+  <ion-slides>
+    <ion-slide>
+      <div class="slide-inner ion-padding">
+        
+        <span>Login</span>
+
+        <ion-item lines="none">
+          <ion-input [(ngModel)]="emailLogin" type="email" placeholder="E-mail" ></ion-input>
+        </ion-item>
+        <p></p>
+        <ion-item lines="none">
+          <ion-input [(ngModel)]="passwordLogin" type="password" placeholder="Senha"></ion-input>
+        </ion-item>
+        <p></p>
+        <ion-label id="labelconectando2" hidden="true">Voce está logando...</ion-label>
+        <p></p>
+        <ion-spinner id="labelconectando" hidden="true"></ion-spinner>
+        <ion-button (click)="login()" expand="block">
+          Entrar
+        </ion-button>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</div>
+</ion-content>

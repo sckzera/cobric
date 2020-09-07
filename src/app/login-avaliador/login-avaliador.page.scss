@@ -1,0 +1,95 @@
+.container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 75%;
+    margin: 0 auto;
+    z-index: 2;
+    top: 5%;
+
+}
+.divErro{
+    color: red;
+    font-size: x-small;
+}
+.divButton{
+    background-color:  #3880ff;
+    width: 100%;
+    border-radius: 7px;
+    height: 40px;
+    font-family: Arial;
+    color: white;
+    font-size: medium;
+    margin-top: 10px;
+}
+ion-content {
+    --background: #6eb1ee;
+    position: center;
+    .divTop{
+        margin-top: 20%;
+    }
+}
+  ion-slides {
+    height: 100%;
+    .slide-inner {
+        width: 75%;
+        color: #fff;
+        border-radius: 10px;
+        
+        ion-item {
+            --background: rgba(255, 255, 255, 0.2);
+            --border-radius: 10px;
+
+            ion-input {
+                --color: #fff;
+            }
+        }
+        ion-checkbox{
+            margin-left: 4px;
+            margin-left: 4px;
+        }
+    }
+
+    }
+.classTelefone{
+    margin-top: 10px;
+    width: 100%;
+    position: center;
+        width: center;
+        text-align: center;
+         
+    #labelTelefone{
+        font-size: small;
+        
+    }
+    }
+    .classRA{
+        margin-top: 10px;
+        width: 100%;
+        position: center;
+        width: center;
+        text-align: center;
+        #labelRA{
+         
+            font-size: small;
+        }
+    }
+.classRadioAluno{
+        position: center;
+        #labelAluno{
+            font-size: small;
+        }
+    }
+.botaovoltar{
+    position: absolute;
+    left: 0px;
+    right: 350px;
+    width: 12%;
+    margin: 0 auto;
+    z-index: 2;
+    top: 5%;
+    background: #00050e23;
+     padding: 0px;
+     border-radius: 15px;
+}
+    
