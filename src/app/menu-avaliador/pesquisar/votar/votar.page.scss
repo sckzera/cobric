@@ -1,0 +1,122 @@
+ion-content {
+    --background: #6db0ee;
+    ion-toolbar.divCodigo{
+        margin: 0 auto;
+        --background: #ffffffbd;
+           // width: 300px;
+            padding: 0px;
+            text-align: center;
+            color: black;
+            font-size: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            text{
+                font-size: 18px;
+            }
+    }
+    ion-toolbar.divAutores{
+        margin: 0 auto;
+        --background: #ffffffbd;
+           // width: 300px;
+            padding: 0px;
+            text-align: center;
+            color: black;
+            border-radius: 15px;
+            font-size: 15px; 
+            margin-top: 10%;
+            text{
+                font-size: 18px;
+            }
+    }
+    ion-toolbar.divOrientador{
+        margin: 0 auto;
+        --background: #ffffffbd;
+        // width: 300px;
+         padding: 0px;
+         text-align: center;
+         color: black;
+         font-size: 15px;
+         border-radius: 10px;
+         margin-top: 3%;
+         text{
+             font-size: 18px;
+         }
+    }
+    ion-toolbar.divTitulo{
+        margin: 0 auto;
+        --background: #ffffffbd;
+        // width: 300px;
+         padding: 0px;
+         text-align: center;
+         color: black;
+         font-size: 15px;
+         border-radius: 10px;
+         margin-top: 3%;
+         text{
+             font-size: 18px;
+         }
+    }
+    
+    ion-button.btnVotar{
+        --background:#ffffff;
+       
+        text-align: center;
+          width: 80%;
+          margin: center ;
+          color: black;
+          margin: 30px;
+      }
+    ion-header{
+        --background: #3f87f3;
+        color: black;
+        margin-left: auto;
+        ion-toolbar{
+            --background: #3f87f3;
+        }
+      
+    }
+}
+ion-header{
+    --background: #3f87f3;
+    color: black;
+    margin-left: auto;
+    ion-toolbar{
+        --background: #3f87f3;
+    }
+  
+}
+
+.csstitulo{
+    margin: 0 auto;
+   // width: 300px;
+    padding: 0px;
+    text-align: center;
+    color: black;
+    border-radius: 15px;
+   //margin-bottom: 80px;
+//width: center;
+//text-align: center;
+ //width: 85%;
+}
+.cssbutao{
+    position: absolute;
+    left: 0px;
+    right: 350px;
+    width: 12%;
+    margin: 0 auto;
+    z-index: 2;
+    top: 40%;
+    background: #00050e23;
+     padding: 0px;
+     border-radius: 15px;
+}
+.divTitulo{
+    background: #ffffffbd;
+    margin: 0 auto;
+   // width: 300px;
+    padding: 0px;
+    text-align: center;
+    color: black;
+    border-radius: 15px;
+}
+

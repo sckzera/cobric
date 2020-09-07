@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <div><button class="cssbutao" (click)="voltarMenu()"><ion-icon name="arrow-back-outline"></ion-icon></button></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar class="divTitulo">
+    <div>
+      <text>Titulo:</text>
+      <p></p>
+      {{tituloGlobal.titulo | uppercase}}
+      <p></p>
+    </div>
+  </ion-toolbar>
+<ion-toolbar class="divCodigo">
+  <div>
+    <ion-header>
+   <h1>Resumo</h1>
+   <div><button class="cssbutao" (click)="MenuHidden()"><ion-icon name="chevron-down-outline"></ion-icon></button></div>
+    <p></p>
+  </ion-header>
+    <div *ngIf="newTrustFormVisible">
+    {{tituloGlobal.resumo | uppercase}}
+    </div>
+    <p></p>
+  </div>
+</ion-toolbar>
+  <ion-toolbar class="divAutores">
+  <div>
+    <text>Autor(es):</text>
+    <p></p>
+    {{tituloGlobal.autor | uppercase}}
+    <p></p>
+  </div>
+</ion-toolbar>
+<ion-toolbar class="divOrientador">
+  <div>
+    <text>Orientador(es):</text>
+    <p></p>
+    {{tituloGlobal.orientador | uppercase}}
+    <p></p>
+  </div>
+</ion-toolbar>
+
+<ion-button class="btnVotar" (click)="votar()">VOTAR</ion-button>
+</ion-content>
