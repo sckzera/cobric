@@ -1,9 +1,32 @@
 <ion-header>
+  <script>
+    const searchbar = document.querySelector('ion-searchbar');
+    const items = Array.from(document.querySelector('ion-list').children);
+
+    searchbar.addEventListener('ionInput', handleInput);
+
+    function handleInput(event) {
+      const query = event.target.value.toLowerCase();
+      requestAnimationFrame(() => {
+        items.forEach(item => {
+          const shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
+          item.style.display = shouldShow ? 'block' : 'none';
+        });
+      });
+    }
+  </script>
   <ion-toolbar>
-    <ion-title>pesquisar</ion-title>
+    <button class="cssbutao" (click)="voltarMenu()"><ion-icon name="arrow-back-outline"></ion-icon></button>
+    <ion-searchbar  class="cssBusca" placeholder="Digite o Titulo do Trabalho" [(ngModel)]="queryText" 
+    (ionInput)="filterTrabalho($event)" clearinput></ion-searchbar> 
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-content>
+  <ion-list lines="full">
+    <ion-item *ngFor="let trabalho of trabalhos">
+      <button (click)="SelecionaTrabalho(trabalho)">{{trabalho.titulo}}</button>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PesquisarPageRoutingModule } from './pesquisar-routing.module';
 
 import { PesquisarPage } from './pesquisar.page';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PesquisarPageRoutingModule
+    PesquisarPageRoutingModule,
+    HttpClientModule
   ],
   declarations: [PesquisarPage]
 })
