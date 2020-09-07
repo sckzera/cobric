@@ -50,6 +50,9 @@ ion-searchbar{
 }
 ion-content{
     --background: #6db0ee;
+    ion-spinner{
+        top: 5px;
+    }
     ion-grid{
         --background: #6db0ee;
         ion-row{

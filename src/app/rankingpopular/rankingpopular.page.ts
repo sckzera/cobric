@@ -17,16 +17,20 @@ export class RankingpopularPage implements OnInit {
    
   constructor(private router:Router, private http: HttpClient, public alertController: AlertController, public loadingController: LoadingController) {
     this.queryText = '';
-    this.presentLoading();
     const headers = {'accept': 'application/json'}
   this.http.get<any>('https://votacaobackend.azurewebsites.net/votos' , { headers }).subscribe(data => {
+    this.presentLoading();
       this.trabalhos = data;
       this.alltrabalhos = this.trabalhos; 
-      
+      var elemento = document.getElementById("labelconectando");
+    elemento.hidden = true;
      }, error => {
-    this.presentAlert("Aconteceu um Erro ao consultar os dados!", "Nos desculpe");
-    this.router.navigate(['./home']);
+    //this.presentAlert("Aconteceu um Erro ao consultar os dados!", "Nos desculpe");
+    //this.router.navigate(['./home']);
+    var elemento = document.getElementById("labelconectando");
+    elemento.hidden = false;
   });
+  
  }
  async presentAlert(mensagemAlerta, tituloAlerta ) {
    
