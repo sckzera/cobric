@@ -67,7 +67,7 @@ export class LoginAvaliadorPage implements OnInit {
       const body = { email: this.emailLogin, senha: this.passwordLogin}
       this.http.post('https://usuariobackend.azurewebsites.net/usuarios/login', body,  {headers} ).subscribe(response => {
         if(response['tipoUsuario'] == "3"){
-         this.router.navigate(['../login-avaliador']);
+         this.router.navigate(['../menu-avaliador']);
          this.userServ.changeData(response['nome'],response['idUsuario']);
          elemento.hidden = true;
          elemento2.hidden = true;

@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'login-avaliador',
     loadChildren: () => import('./login-avaliador/login-avaliador.module').then( m => m.LoginAvaliadorPageModule)
   },
+  {
+    path: 'menu-avaliador',
+    loadChildren: () => import('./menu-avaliador/menu-avaliador.module').then( m => m.MenuAvaliadorPageModule)
+  },
 
 
 ];
