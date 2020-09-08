@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <button class="cssbutao" (click)="voltarMenu()"><ion-icon name="arrow-back-outline"></ion-icon></button>
+    <ion-title>{{tituloGlobal | uppercase}}</ion-title>
     <ion-searchbar  class="cssBusca" placeholder="Digite o Titulo do Trabalho" [(ngModel)]="queryText" 
     (ionInput)="filterTrabalho($event)" clearinput></ion-searchbar> 
   </ion-toolbar>
@@ -8,18 +9,18 @@
 
 <ion-content>
   <div class="divCarregando">
-    <ion-label id="labelconectando2">Carregando...</ion-label>
+    <ion-label id="labelconectando10">Carregando...</ion-label>
           <p></p>
-          <ion-spinner id="labelconectando3"></ion-spinner>
+          <ion-spinner id="labelconectando11"></ion-spinner>
         </div>
   <ion-grid>
     <ion-row *ngFor="let trabalho of trabalhos">
-      <ion-item >    
+      <ion-item style="border-style:ridge; border-color: rgba(0, 0, 0, 0.644); border-radius: 15px; margin-top: 8px; margin-bottom: 8px;">
       <ion-col>
-        {{trabalho.tituloTrabalho}}
+        {{trabalho.titulo}}
       </ion-col>
-      <ion-col class="valor">
-        {{trabalho.totalVotos}} ponto(s)
+      <ion-col>
+        {{trabalho.data}}
       </ion-col>
     </ion-item>
     </ion-row>

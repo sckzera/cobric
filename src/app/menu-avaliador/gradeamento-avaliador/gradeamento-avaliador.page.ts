@@ -6,34 +6,34 @@ import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-rankingpopular',
-  templateUrl: './rankingpopular.page.html',
-  styleUrls: ['./rankingpopular.page.scss'],
+  selector: 'app-gradeamento-avaliador',
+  templateUrl: './gradeamento-avaliador.page.html',
+  styleUrls: ['./gradeamento-avaliador.page.scss'],
 })
-export class RankingpopularPage implements OnInit {
-  trabalhos: Array<{idVotos: string, idGradeamento: string, totalVotos:number, tituloTrabalho:string}>
+export class GradeamentoAvaliadorPage implements OnInit {
+  trabalhos: Array<{titulo: string, codigo: string, autores:string, orientador:string, data:string}>
   alltrabalhos:any;
   queryText:string;
    
   constructor(private router:Router, private http: HttpClient, public alertController: AlertController, public loadingController: LoadingController) {
     this.queryText = '';
     const headers = {'accept': 'application/json'}
-  this.http.get<any>('https://votacaobackend.azurewebsites.net/votos' , { headers }).subscribe(data => {
-    var elemento = document.getElementById("labelconectando2");
+    this.http.get<any>('https://gradeamentobackend.azurewebsites.net/gradeamentos' , { headers }).subscribe(data => {
+      var elemento = document.getElementById("labelconectando10");
         elemento.hidden = true;
-        var elemento2 = document.getElementById("labelconectando3");
+        var elemento2 = document.getElementById("labelconectando11");
         elemento2.hidden = true;
-    this.presentLoading();
-      this.trabalhos = data;
-      this.alltrabalhos = this.trabalhos; 
-     }, error => {
-    this.presentAlert("Aconteceu um Erro ao consultar os dados!", "Nos desculpe");
-    this.router.navigate(['./home']);
-  });
-  
+      this.presentLoading("start");
+        this.trabalhos = data;
+        this.alltrabalhos = this.trabalhos; 
+        
+       }, error => {
+      this.presentAlert("Aconteceu um Erro ao consultar os dados!", "Nos desculpe");
+      this.router.navigate(['../menu-avaliador']);
+    });
  }
+ // Metodo de Alerta.
  async presentAlert(mensagemAlerta, tituloAlerta ) {
-   
   const alert = await this.alertController.create({
     cssClass: 'my-custom-class',
     header: tituloAlerta,
@@ -43,26 +43,29 @@ export class RankingpopularPage implements OnInit {
   
   await alert.present();
 }
-
-async presentLoading() {
+// Metodo chamado para carregar os Dados do Gradeamento.
+async presentLoading(apresentacao:any) {
   const loading = await this.loadingController.create({
     cssClass: 'my-custom-class',
-    message: 'Estamos consultando...',
-    duration: 3000
+    message: 'Estamos Consultando os dados...',
+    duration: 3500
   });
-  
-  await loading.present();
+if(apresentacao=="start"){
+  await loading.present();}
+else{
+  await loading.dismiss();
+}
 }
 
   ngOnInit() {
   }
-
+// Metodo para filtrar no buscar
   filterTrabalho(cid:any){
     let val = cid.target.value;
     if(val && val.trim() != ''){
       this.trabalhos = _.values(this.alltrabalhos);
       this.trabalhos = this.trabalhos.filter((trabalho) => {
-        return (trabalho.tituloTrabalho.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (trabalho.titulo.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
     else{
@@ -70,6 +73,7 @@ async presentLoading() {
     }
     }
   voltarMenu(){
-    this.router.navigate(['./home']);
+    this.router.navigate(['../menu-avaliador']);
   }
 }
+

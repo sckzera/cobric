@@ -53,19 +53,31 @@ tituloTrabalho:string;
     
   }
   votar(){
+    var elemento = document.getElementById("labelconectando14");
+    elemento.hidden = false;
+    var elemento2 = document.getElementById("labelconectando13");
+    elemento2.hidden = false;
       var headers = {'contentType': 'application/json'};
       const body = { idGradeamento: this.idGradeamento, idUsuario: this.idUsuario}
       this.http.post('https://votacaobackend.azurewebsites.net/votacao', body,  {headers} ).subscribe(response => {
         var headers = {'contentType': 'application/json'};
       const body = { idGradeamento: this.idGradeamento, totalVotos: this.totalVotos, tituloTrabalho: this.tituloTrabalho}
       this.http.post('https://votacaobackend.azurewebsites.net/votos', body,  {headers} ).subscribe(response => {
+        elemento2.hidden = true;
+        elemento.hidden = true;
         this.presentAlert(this.tituloTrabalho , "Voce votou no grupo abaixo, Obrigado!");
+        
       }, error => {
+        elemento2.hidden = true;
+        elemento.hidden = true;
         this.presentAlert("Reabra o aplicativo e tente novamente.", "Aconteceu um Erro Inesperado");
+        
       })
         
      }, error => {
-      this.presentAlert("Contate um organizador.", " Parece que voce já votou nesse grupo!");
+      elemento2.hidden = true;
+      elemento.hidden = true;
+      this.presentAlert("Se for um erro, contate um Organizador.", " Parece que voce já votou nesse grupo!");
       })}
      
   

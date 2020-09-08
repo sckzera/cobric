@@ -1,5 +1,10 @@
 ion-content {
     --background: #6db0ee;
+    .divCarregando{
+        ion-label{
+           font-size: 20px;
+        }
+    }
     ion-button{
         padding: 0px;
      color: black;
@@ -20,6 +25,7 @@ ion-content {
             padding: 0px;
             color: black;
             margin-top: 2px;
+            border-radius: 7px;
             margin-bottom: 1px;
     }
     ion-toolbar.divOrientador{

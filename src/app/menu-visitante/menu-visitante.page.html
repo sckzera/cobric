@@ -7,11 +7,9 @@
 
 <ion-content class="swiper-no-swiping">
   <div class="divSuperior">
-  <ion-button expand="round" [routerLink]="['/menu-visitante/informacoes']">Informações</ion-button> 
-  <ion-button expand="round" [routerLink]="['/menu-visitante/localizacao']">Localização</ion-button> 
+  <ion-button expand="round" [routerLink]="['/menu-visitante/informacoes']"><ion-icon slot="start" name="information-outline"></ion-icon>Informações</ion-button> 
+  <ion-button expand="round" [routerLink]="['/menu-visitante/localizacao']"><ion-icon slot="start" name="compass-outline"></ion-icon>Localização</ion-button> 
+  <ion-button expand="round" [routerLink]="['/menu-visitante/gradeamento']"><ion-icon slot="start" name="calendar-outline"></ion-icon>Gradeamento</ion-button> 
+  <ion-button expand="round" [routerLink]="['/menu-visitante/pesquisar']"><ion-icon slot="start" name="ribbon-outline"></ion-icon>Votar</ion-button> 
  </div>
- <div class="divInferior">
-  <ion-button expand="round" [routerLink]="['/menu-visitante/gradeamento']">Gradeamento</ion-button> 
-  <ion-button expand="round" [routerLink]="['/menu-visitante/pesquisar']">Votar</ion-button> 
-  </div>
 </ion-content>

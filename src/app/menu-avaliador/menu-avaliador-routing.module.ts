@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'pesquisar',
     loadChildren: () => import('./pesquisar/pesquisar.module').then( m => m.PesquisarPageModule)
+  },
+  {
+    path: 'gradeamento-avaliador',
+    loadChildren: () => import('./gradeamento-avaliador/gradeamento-avaliador.module').then( m => m.GradeamentoAvaliadorPageModule)
   }
 ];
 

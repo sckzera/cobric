@@ -1,5 +1,10 @@
 ion-content {
     --background: #6db0ee;
+    .divCarregando{
+        ion-label{
+           font-size: 20px;
+        }
+    }
     ion-header{
         --background: #3f87f3;
         color: black;

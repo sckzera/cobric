@@ -3,8 +3,7 @@ ion-content {
     .divCarregando{
         ion-label{
            font-size: 20px;
-        }
-    }
+        }}
     ion-header{
         --background: #3f87f3;
         color: black;
@@ -55,25 +54,19 @@ ion-searchbar{
 }
 ion-content{
     --background: #6db0ee;
-    ion-spinner{
-        top: 5px;
-    }
     ion-grid{
         --background: #6db0ee;
         ion-row{
             --background: #6db0ee;
             ion-item{
-                border-style:ridge;
-                border-color: rgba(0, 0, 0, 0.644);
-                border-radius: 15px;
-                margin-top: 8px;
-                margin-bottom: 8px;
-                width: 100%;
-                ion-col.valor{
-                    margin-left: 15px;
+                //--background: #ffffff;
+               // --border-color: black;
+               // --border-radius: 20px;
+              //  --border-style: solid ;
+                ion-col{
+                    
                 }
             }
-        
             }
         }
     }

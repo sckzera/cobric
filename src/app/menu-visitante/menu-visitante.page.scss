@@ -1,11 +1,17 @@
 ion-content {
     --background: #6db0ee;
     z-index: 2;
+    .divSuperior{
+        margin-top: 20%;
+        
+
+    }
     ion-button{
         --background:#f5f9fd;
-          width: 48%;
-          margin-left: 2px;
-          margin-right: 2px;
+          height: 60px;
+          width: 65%;
+          margin-left: 5px;
+          margin-right: 5px;
           color: black;
           
       }
@@ -46,7 +52,4 @@ ion-toolbar{
     background: #00050e23;
      padding: 0px;
      border-radius: 15px;
-}
-.divSuperior{
-    margin-top: 50%;
 }

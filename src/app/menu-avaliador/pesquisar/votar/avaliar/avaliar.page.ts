@@ -53,6 +53,10 @@ CodigoUuid:string;
       this.presentAlert("", "Atenção, contem campos não preenchidos.");
     }
     else{
+      var elemento = document.getElementById("labelconectando9");
+        elemento.hidden = false;
+        var elemento2 = document.getElementById("labelconectando8");
+        elemento2.hidden = false;
       this.qtotal = Number(this.q1resposta) + Number(this.q2resposta) + Number(this.q3resposta) + Number(this.q4resposta) + Number(this.q5resposta) + Number(this.q6resposta) + Number(this.q7resposta) + Number(this.q8resposta) + Number(this.q9resposta) + Number(this.q10resposta) ;
       var headers = {'codigoAvaliador': this.vetorUser, 'codigoResumo': this.idGradeamento};
       const body = { relevancia: Number(this.q1resposta), adequacao: Number(this.q2resposta), coerencia: Number(this.q3resposta), apresentacaoAdequada: Number(this.q4resposta), avaliacaoResumo: Number(this.q5resposta),  qualidade : Number(this.q6resposta), apresentacaoOral: Number(this.q7resposta), contribuicaoDesenvolvimento: Number(this.q8resposta) , contribuicaoComunidade: Number(this.q9resposta) , avaliacaoGeral:Number(this.q10resposta), somaDasNotas: Number(this.qtotal), premioTeixeira: Number(this.q11resposta) }
@@ -60,19 +64,27 @@ CodigoUuid:string;
         if(this.q11resposta == 1)
         {
           this.presentAlert("Enviado a Votação com Total de " + this.qtotal + " e o grupo FOI indicado ao Premio Milton Teixeira", "GRUPO (" + this.tituloTrabalho + ")");
+          elemento.hidden = true;
+          elemento2.hidden = true;
         }
         else{
           this.presentAlert("Enviado a Votação com Total de " + this.qtotal + " e o grupo NÃO foi indicado ao Premio Milton Teixeira", "GRUPO (" + this.tituloTrabalho + ")");
+          elemento.hidden = true;
+          elemento2.hidden = true;
         }
       }, error => {
        this.variavelqualquer = error['error']['mensagem'];
         if(this.variavelqualquer.includes('avaliacao')){
          this.CodigoUuid = this.variavelqualquer.substr(51,87);
           this.presentAlertConfirm(this.CodigoUuid);
+          elemento.hidden = true;
+          elemento2.hidden = true;
         }
         else{
           this.presentAlert("Reabra o aplicativo e tente novamente.", "Aconteceu um Erro Inesperado e a Votação não foi Concluida");
           this.router.navigate(['../../home']);
+          elemento.hidden = true;
+          elemento2.hidden = true;
         }
       })
   

@@ -21,11 +21,16 @@ export class PesquisarPage implements OnInit {
       this.queryText = '';
       const headers = {'accept': 'application/json'}
       this.http.get<any>('https://gradeamentobackend.azurewebsites.net/gradeamentos' , { headers }).subscribe(data => {
+        var elemento = document.getElementById("labelconectando5");
+        elemento.hidden = true;
+        var elemento2 = document.getElementById("labelconectando4");
+        elemento2.hidden = true;
         this.presentLoading("start");
           this.trabalhos = data;
           this.alltrabalhos = this.trabalhos; 
          }, error => {
-          this.presentAlert("Ao carregar o dados, reabra o Aplicativo.", "Aconteceu um Erro:");
+          this.presentAlert("Ao carregar os dados, reabra o Aplicativo.", "Aconteceu um Erro!");
+          this.router.navigate(['../../home']);
       }); 
       this.presentLoading("stop");
   
