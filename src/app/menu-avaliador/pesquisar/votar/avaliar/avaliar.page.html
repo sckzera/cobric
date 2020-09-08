@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="csstitulo">Avaliar</ion-title>
+    <div><button class="cssbutao" (click)="voltarMenu()"><ion-icon name="arrow-back-outline"></ion-icon></button></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-label class="divResumo">Resumo</ion-label>
+  <ion-item class="divTexto">
+    <ion-label>Relevância do tema e grau de contribuição para a área do conhecimento</ion-label>
+    <ion-select id="q1" [(ngModel)]="q1resposta" interface="sheet">
+      <ion-select-option value="1">Ótimo</ion-select-option>
+      <ion-select-option value="0.75">Bom</ion-select-option>
+      <ion-select-option value="0.5">Regular</ion-select-option>
+      <ion-select-option value="0.25">Ruim</ion-select-option>
+      <ion-select-option value="0">Péssimo</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="divTexto">
+    <ion-label>Adequação dos métodos</ion-label>
+    <ion-select [(ngModel)]="q2resposta" interface="sheet">
+      <ion-select-option value="1">Ótimo</ion-select-option>
+      <ion-select-option value="0.75">Bom</ion-select-option>
+      <ion-select-option value="0.5">Regular</ion-select-option>
+      <ion-select-option value="0.25">Ruim</ion-select-option>
+      <ion-select-option value="0">Péssimo</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="divTexto">
+    <ion-label>Coerência dos resultados e conclusão aos objetivos</ion-label>
+    <ion-select [(ngModel)]="q3resposta" interface="sheet">
+      <ion-select-option value="1">Ótimo</ion-select-option>
+      <ion-select-option value="0.75">Bom</ion-select-option>
+      <ion-select-option value="0.5">Regular</ion-select-option>
+      <ion-select-option value="0.25">Ruim</ion-select-option>
+      <ion-select-option value="0">Péssimo</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="divTexto">
+    <ion-label>Apresentação adequada dos resultados e conclusão</ion-label>
+    <ion-select [(ngModel)]="q4resposta" interface="sheet">
+      <ion-select-option value="1">Ótimo</ion-select-option>
+      <ion-select-option value="0.75">Bom</ion-select-option>
+      <ion-select-option value="0.5">Regular</ion-select-option>
+      <ion-select-option value="0.25">Ruim</ion-select-option>
+      <ion-select-option value="0">Péssimo</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="divTexto">
+    <ion-label>Avaliação geral do resumo</ion-label>
+    <ion-select [(ngModel)]="q5resposta" interface="sheet">
+      <ion-select-option value="1">Ótimo</ion-select-option>
+      <ion-select-option value="0.75">Bom</ion-select-option>
+      <ion-select-option value="0.5">Regular</ion-select-option>
+      <ion-select-option value="0.25">Ruim</ion-select-option>
+      <ion-select-option value="0">Péssimo</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-label class="divResumo">Apresentação</ion-label>
+  <ion-item class="divTexto"> 
+    <ion-label>Qualidade das informações/layout dos slides</ion-label>
+    <ion-select [(ngModel)]="q6resposta" interface="sheet">
+      <ion-select-option value="1">Ótimo</ion-select-option>
+      <ion-select-option value="0.75">Bom</ion-select-option>
+      <ion-select-option value="0.5">Regular</ion-select-option>
+      <ion-select-option value="0.25">Ruim</ion-select-option>
+      <ion-select-option value="0">Péssimo</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="divTexto">
+    <ion-label>Apresentação oral (objetividade e coerência)</ion-label>
+    <ion-select [(ngModel)]="q7resposta" interface="sheet">
+      <ion-select-option value="1">Ótimo</ion-select-option>
+      <ion-select-option value="0.75">Bom</ion-select-option>
+      <ion-select-option value="0.5">Regular</ion-select-option>
+      <ion-select-option value="0.25">Ruim</ion-select-option>
+      <ion-select-option value="0">Péssimo</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="divTexto">
+    <ion-label>Contribuição do projeto p/ desenvolvimento regional</ion-label>
+    <ion-select [(ngModel)]="q8resposta" interface="sheet">
+      <ion-select-option value="1">Ótimo</ion-select-option>
+      <ion-select-option value="0.75">Bom</ion-select-option>
+      <ion-select-option value="0.5">Regular</ion-select-option>
+      <ion-select-option value="0.25">Ruim</ion-select-option>
+      <ion-select-option value="0">Péssimo</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="divTexto"> 
+    <ion-label>Contribuição do projeto p/ comunidade (social)</ion-label>
+    <ion-select [(ngModel)]="q9resposta" interface="sheet">
+      <ion-select-option value="1">Ótimo</ion-select-option>
+      <ion-select-option value="0.75">Bom</ion-select-option>
+      <ion-select-option value="0.5">Regular</ion-select-option>
+      <ion-select-option value="0.25">Ruim</ion-select-option>
+      <ion-select-option value="0">Péssimo</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="divTexto">
+    <ion-label>Avaliação geral</ion-label>
+    <ion-select [(ngModel)]="q10resposta" interface="sheet">
+      <ion-select-option value="1">Ótimo</ion-select-option>
+      <ion-select-option value="0.75">Bom</ion-select-option>
+      <ion-select-option value="0.5">Regular</ion-select-option>
+      <ion-select-option value="0.25">Ruim</ion-select-option>
+      <ion-select-option value="0">Péssimo</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-label class="divResumo">Indicar para o premio Milton Teixeira?</ion-label>
+  <ion-item class="divTexto">
+    <ion-label>Indicação para Prêmio Dr. Milton Teixeira?</ion-label>
+    <ion-select [(ngModel)]="q11resposta" interface="sheet">
+      <ion-select-option value="1">Sim</ion-select-option>
+      <ion-select-option value="0">Não</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+
+  <ion-button (click)="votar()"> Enviar Avaliação </ion-button>
+</ion-content>

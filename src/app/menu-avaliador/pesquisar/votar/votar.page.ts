@@ -33,11 +33,10 @@ export class VotarPage implements OnInit {
      this.idUsuario = this.vetorUser;
      if(this.idUsuario=="{ERRO}" || this.idGradeamento =="{ERRO}" || this.tituloTrabalho =="{ERRO}"){
       this.presentAlert("Faça o Login novamente.", "Aconteceu um Erro");
-      this.router.navigate(['../login-avaliador']);
+      this.router.navigate(['../../home']);
      }
     }
     voltarMenu(){
-  
       this.router.navigate(['../menu-avaliador/pesquisar']);
     }
   
