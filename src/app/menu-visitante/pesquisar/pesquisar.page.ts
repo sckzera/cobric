@@ -21,6 +21,10 @@ date: any = new Date().getDate().toString();
     this.queryText = '';
     const headers = {'accept': 'application/json'}
     this.http.get<any>('https://gradeamentobackend.azurewebsites.net/gradeamentos' , { headers }).subscribe(data => {
+      var elemento = document.getElementById("labelconectando97");
+      elemento.hidden = true;
+      var elemento2 = document.getElementById("labelconectando96");
+      elemento2.hidden = true;
       this.presentLoading("start");
         this.trabalhos = data;
         this.alltrabalhos = this.trabalhos; 
@@ -82,8 +86,8 @@ date: any = new Date().getDate().toString();
   async presentLoading(a:any) {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
-      message: 'Estamos consultado os dados...',
-      duration: 5000
+      message: 'Estamos finalizando a consulta dos dados...',
+      duration: 4000
     });
   if(a=="start"){
     await loading.present();}
