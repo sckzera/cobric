@@ -42,7 +42,7 @@ CodigoUuid:string;
       this.tituloTrabalho = this.tituloGlobal["titulo"];
       this.idGradeamento = this.tituloGlobal["idGradeamento"];
      if(this.vetorUser=="{ERRO}" || this.tituloGlobal["idGradeamento"] =="{ERRO}"){
-      this.presentAlert("Faça o Login novamente.", "Aconteceu um Erro Inesperado");
+      this.presentAlert("Faça o Login novamente.", "Aconteceu um Erro");
      // this.router.navigate(['../../home']);
      }
    
@@ -50,7 +50,7 @@ CodigoUuid:string;
 
   votar(){
     if(this.q1resposta == null || this.q2resposta == null || this.q3resposta == null || this.q4resposta == null || this.q5resposta == null || this.q6resposta == null || this.q7resposta == null || this.q8resposta == null || this.q9resposta == null || this.q10resposta == null || this.q11resposta == null){
-      this.presentAlert("", "Atenção, contem campos não preenchidos.");
+      this.presentAlert("", "Atenção, possuem campos não preenchidos.");
     }
     else{
       var elemento = document.getElementById("labelconectando9");
@@ -63,12 +63,12 @@ CodigoUuid:string;
       this.http.post('https://avaliadoresbackend.azurewebsites.net/avaliacoes', body,  {headers} ).subscribe(response => {
         if(this.q11resposta == 1)
         {
-          this.presentAlert("Enviado a Votação com Total de " + this.qtotal + " e o grupo FOI indicado ao Premio Milton Teixeira", "GRUPO (" + this.tituloTrabalho + ")");
+          this.presentAlert("Enviado a Votação com Total de " + this.qtotal + " e o grupo FOI indicado ao prêmio Milton Teixeira", "GRUPO (" + this.tituloTrabalho + ")");
           elemento.hidden = true;
           elemento2.hidden = true;
         }
         else{
-          this.presentAlert("Enviado a Votação com Total de " + this.qtotal + " e o grupo NÃO foi indicado ao Premio Milton Teixeira", "GRUPO (" + this.tituloTrabalho + ")");
+          this.presentAlert("Enviado a Votação com Total de " + this.qtotal + " e o grupo NÃO foi indicado ao prêmio Milton Teixeira", "GRUPO (" + this.tituloTrabalho + ")");
           elemento.hidden = true;
           elemento2.hidden = true;
         }
@@ -81,7 +81,7 @@ CodigoUuid:string;
           elemento2.hidden = true;
         }
         else{
-          this.presentAlert("Reabra o aplicativo e tente novamente.", "Aconteceu um Erro Inesperado e a Votação não foi Concluida");
+          this.presentAlert("Votação não foi Concluida!", "Aconteceu um Erro");
           this.router.navigate(['../../home']);
           elemento.hidden = true;
           elemento2.hidden = true;
@@ -108,8 +108,8 @@ voltarMenu(){
 async presentAlertConfirm(Uuid:string) {
   const alert = await this.alertController.create({
     cssClass: 'my-custom-class',
-    header: 'Caro Avaliador, parece que voce ja votou nesse Grupo!',
-    message: 'Voce deseja sobrescrever a sua votação?',
+    header: 'Caro Avaliador, parece que você ja votou nesse Grupo!',
+    message: 'Você deseja sobrescrever a sua votação?',
     buttons: [
       {
         text: 'Não',
@@ -126,14 +126,14 @@ async presentAlertConfirm(Uuid:string) {
       this.http.put('https://avaliadoresbackend.azurewebsites.net/avaliacoes/'+Uuid, body, {headers} ).subscribe(response => {
         if(this.q11resposta == 1)
         {
-          this.presentAlert("Enviado a Votação com Total de " + this.qtotal + " e o grupo FOI indicado ao Premio Milton Teixeira", "Dados atualizados com Sucesso.");
+          this.presentAlert("Enviado a Votação com Total de " + this.qtotal + " e o grupo FOI indicado ao prêmio Milton Teixeira", "Dados atualizados com Sucesso.");
         }
         else{
-          this.presentAlert("Enviado a Votação com Total de " + this.qtotal + " e o grupo NÃO foi indicado ao Premio Milton Teixeira", "Dados atualizados com Sucesso.");
+          this.presentAlert("Enviado a Votação com Total de " + this.qtotal + " e o grupo NÃO foi indicado ao prêmio Milton Teixeira", "Dados atualizados com Sucesso.");
         }
       }, error => {
     
-        this.presentAlert("Reabra o aplicativo e tente novamente.", "Aconteceu um Erro Inesperado e os Dados não foram atualizados.");
+        this.presentAlert("ao Atualizar os dados, por gentileza, tente novamente!", "Aconteceu um Erro");
         this.router.navigate(['../../home']);
       })
         }

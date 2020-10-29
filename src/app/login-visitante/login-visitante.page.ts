@@ -14,6 +14,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
  
 })
 export class LoginVisitantePage implements OnInit {
+  clicked:boolean;
 @ViewChild(IonSlides) slides: IonSlides;
 @ViewChild(IonToggle) toggle: IonToggle;
 emailLogin:string;
@@ -39,7 +40,7 @@ constructor(private http: HttpClient, public alertController: AlertController, p
     this.tipousuario = "2";
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       telefone: ['', [Validators.pattern("^[0-9]*$")]],
       ra: ['']
@@ -61,12 +62,14 @@ constructor(private http: HttpClient, public alertController: AlertController, p
   }
   onSubmit() {
     this.submitted = true;
+    this.clicked = false;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
         return;
     }
     else{
-this.cadastrar();
+      this.clicked = true;
+      this.cadastrar();
     }
 }
   // Evento para Transição entre LOGIN e Cadastrar "Animação".
@@ -106,21 +109,26 @@ login(){
     })
   }
 
+  actionMethod(){
+    this.cadastrar();
+  } 
+
 // Sistema de Cadastror - Se for 1 é Aluno, 2 Não aluno
 cadastrar(){
   if(this.toggle.checked === true)
   this.tipousuario = "1";
   else
   this.tipousuario = "2";
-
  var headers = {'contentType': 'application/json','tipoUsuario': this.tipousuario};
  const body = { nome: this.nomeregistrar, email: this.emailregistrar, senha: this.senharegistrar, ra: this.ra, telefone: this.telefone }
  this.http.post('https://usuariobackend.azurewebsites.net/usuarios/cadastro', body,  {headers} ).subscribe(response => {
-  this.presentAlert("Usuario Criado com Sucesso.", "Bem Vindo")
+  this.presentAlert("Usuário criado com Sucesso.", "Bem-Vindo")
   this.slides.slidePrev();
   document.getElementById("idLogin").click();
+  this.clicked = false;
  }, error => {
   this.presentAlert(error['error']['mensagem'], "Aconteceu um Erro");
+  this.clicked = false;
  })
 }
 // Metodo para alterar as views, caso seja aluno ou nao.

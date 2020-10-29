@@ -65,19 +65,19 @@ tituloTrabalho:string;
       this.http.post('https://votacaobackend.azurewebsites.net/votos', body,  {headers} ).subscribe(response => {
         elemento2.hidden = true;
         elemento.hidden = true;
-        this.presentAlert(this.tituloTrabalho , "Voce votou no grupo abaixo, Obrigado!");
+        this.presentAlert(this.tituloTrabalho , "Obrigado! Você votou no grupo:");
         
       }, error => {
         elemento2.hidden = true;
         elemento.hidden = true;
-        this.presentAlert("Reabra o aplicativo e tente novamente.", "Aconteceu um Erro Inesperado");
-        
+        this.presentAlert("Por gentileza, entre novamente.", "Aconteceu um Erro");
+        this.router.navigate(['../../home']);
       })
         
      }, error => {
       elemento2.hidden = true;
       elemento.hidden = true;
-      this.presentAlert("Se for um erro, contate um Organizador.", " Parece que voce já votou nesse grupo!");
+      this.presentAlert("Se for um erro, contate um Organizador.", "Parece que você já votou neste grupo!");
       })}
      
   

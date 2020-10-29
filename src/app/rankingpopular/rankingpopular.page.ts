@@ -47,7 +47,7 @@ export class RankingpopularPage implements OnInit {
 async presentLoading() {
   const loading = await this.loadingController.create({
     cssClass: 'my-custom-class',
-    message: 'Estamos consultando...',
+    message: 'Estamos finalizando a consulta aos dados...',
     duration: 3000
   });
   

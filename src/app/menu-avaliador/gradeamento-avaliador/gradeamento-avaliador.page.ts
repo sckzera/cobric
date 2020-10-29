@@ -28,7 +28,7 @@ export class GradeamentoAvaliadorPage implements OnInit {
         this.alltrabalhos = this.trabalhos; 
         
        }, error => {
-      this.presentAlert("Aconteceu um Erro ao consultar os dados!", "Nos desculpe");
+      this.presentAlert("Desculpe, não conseguimos consultar os dados!", "Aconteceu um Erro");
       this.router.navigate(['../menu-avaliador']);
     });
  }
@@ -47,7 +47,7 @@ export class GradeamentoAvaliadorPage implements OnInit {
 async presentLoading(apresentacao:any) {
   const loading = await this.loadingController.create({
     cssClass: 'my-custom-class',
-    message: 'Estamos Consultando os dados...',
+    message: 'Estamos finalizando a consulta aos dados...',
     duration: 3500
   });
 if(apresentacao=="start"){

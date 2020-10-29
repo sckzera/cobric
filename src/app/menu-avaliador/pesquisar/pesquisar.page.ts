@@ -29,7 +29,7 @@ export class PesquisarPage implements OnInit {
           this.trabalhos = data;
           this.alltrabalhos = this.trabalhos; 
          }, error => {
-          this.presentAlert("Ao carregar os dados, reabra o Aplicativo.", "Aconteceu um Erro!");
+          this.presentAlert("Desculpe, não conseguimos consultar os dados! Por gentileza, entre novamente.", "Aconteceu um Erro");
           this.router.navigate(['../../home']);
       }); 
       this.presentLoading("stop");
@@ -87,7 +87,7 @@ export class PesquisarPage implements OnInit {
     async presentLoading(a:any) {
       const loading = await this.loadingController.create({
         cssClass: 'my-custom-class',
-        message: 'Estamos consultado os dados...',
+        message: 'Estamos finalizando a consulta aos dados...',
         duration: 5000
       });
     if(a=="start"){

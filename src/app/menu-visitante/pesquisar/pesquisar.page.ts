@@ -29,7 +29,7 @@ date: any = new Date().getDate().toString();
         this.trabalhos = data;
         this.alltrabalhos = this.trabalhos; 
        }, error => {
-        this.presentAlert("Ao carregar o dados, reabra o Aplicativo.", "Aconteceu um Erro:");
+        this.presentAlert("Desculpe, não conseguimos consultar os dados! Por gentileza, entre novamente.", "Aconteceu um Erro");
     }); 
     this.presentLoading("stop");
 
@@ -86,7 +86,7 @@ date: any = new Date().getDate().toString();
   async presentLoading(a:any) {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
-      message: 'Estamos finalizando a consulta dos dados...',
+      message: 'Estamos finalizando a consulta aos dados...',
       duration: 4000
     });
   if(a=="start"){

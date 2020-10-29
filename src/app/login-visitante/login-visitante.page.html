@@ -26,7 +26,7 @@
           <ion-input [(ngModel)]="passwordLogin" type="password" placeholder="Senha"></ion-input>
         </ion-item>
         <p></p>
-        <ion-label id="labelconectando2" hidden="true">Voce está logando...</ion-label>
+        <ion-label id="labelconectando2" hidden="true">Você está logando...</ion-label>
         <p></p>
         <ion-spinner id="labelconectando" hidden="true"></ion-spinner>
         <ion-button (click)="login()" expand="block">
@@ -68,9 +68,9 @@
           </div>       
       <div class="classRadioAluno">
         <p></p>
-        <span id="labelAluno">Voce é aluno UNISANTA ?</span>
+        <span id="labelAluno">Você é aluno UNISANTA ?</span>
         <p></p>
-       <span id="labelnao" style="color:green">Nao</span> <ion-toggle id="radioAluno" (ionChange) = "checkboxRadio()" color="primary"></ion-toggle> <span id="labelsim">Sim</span>
+       <span id="labelnao" style="color:green">Não</span> <ion-toggle id="radioAluno" (ionChange) = "checkboxRadio()" color="primary"></ion-toggle> <span id="labelsim">Sim</span>
       </div>
         <div id="classTelefone" class="classTelefone">
           <span id="labelTelefone">Digite seu Telefone com DDD</span>
@@ -88,7 +88,7 @@
           </ion-item>
         </div>
         <div class="form-group">
-        <button class="divButton">Cadastrar</button>
+        <button [disabled]="clicked" (click)="onSubmit();" id="clicou" class="divButton">Cadastrar</button>
         </div>
       </form>
       </div>   

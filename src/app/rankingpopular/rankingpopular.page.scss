@@ -25,16 +25,12 @@ ion-searchbar{
 
 }
 .csstitulo{
-    margin: 0 auto;
-   // width: 300px;
-    padding: 0px;
-    text-align: center;
-    color: black;
-    border-radius: 15px;
-   //margin-bottom: 80px;
-//width: center;
-//text-align: center;
- //width: 85%;
+    left: 0px;
+    right: 350px;
+    z-index: 2;
+    background: #00050e23;
+     padding: 0px;
+     border-radius: 15px;
 }
 .cssbutao{
     position: absolute;

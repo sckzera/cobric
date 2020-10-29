@@ -53,7 +53,6 @@ export class LoginAvaliadorPage implements OnInit {
         message: mensagemAlerta,
         buttons: ['OK']
       });
-      
       await alert.present();
      
     }
@@ -74,7 +73,7 @@ export class LoginAvaliadorPage implements OnInit {
         }else{
          // Retorna para Menu Principal
          this.router.navigate(['../home']);
-         this.presentAlert("Essa Conta não é uma Conta Avaliador.", "Aconteceu um Erro");
+         this.presentAlert("Essa conta não é uma conta Avaliador.", "Aconteceu um Erro");
          elemento.hidden = true;
          elemento2.hidden = true;
         }

@@ -49,7 +49,7 @@ export class LocalizacaoPage {
   addInfoWindowToMarker(marker) {
     let infoWindowContent = '<div id="content">' +
                               '<h2 id="firstHeading" class"firstHeading">' + marker.title + '</h2>' +
-                              '<p>Congresso Brasileiro de Iniciação Cientifca</p>' +
+                              '<p>Congresso Brasileiro de Iniciação Científica</p>' +
                               '<p>Telefone: (13) 3202-7100</p>' + '<p>Rua Oswaldo Cruz, 277  Bloco E</p>' +
                             '</div>';
 

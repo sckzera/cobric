@@ -19,7 +19,7 @@ export class MenuAvaliadorPage implements OnInit {
       this.userServ.serviceData2
       .subscribe(data2 => (this.emailGlobal = data2));
       if(this.nomeGlobal == "{ERRO}"){
-        this.presentAlert("Faça o Login novamente.", "Aconteceu um Erro");
+        this.presentAlert("Faça o Login novamente!", "Aconteceu um Erro");
         this.router.navigate(['../login-avaliador']);
       }
   }
