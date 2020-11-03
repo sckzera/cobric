@@ -40,7 +40,7 @@ constructor(private http: HttpClient, public alertController: AlertController, p
     this.tipousuario = "2";
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$")]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       telefone: ['', [Validators.pattern("^[0-9]*$")]],
       ra: ['']
@@ -90,7 +90,7 @@ login(){
   var elemento2 = document.getElementById("labelconectando2");
   elemento2.hidden = false;
     var headers = {'contentType': 'application/json'};
-    const body = { email: this.emailLogin, senha: this.passwordLogin}
+    const body = { email: this.emailLogin.toLowerCase(), senha: this.passwordLogin}
     this.http.post('https://usuariobackend.azurewebsites.net/usuarios/login', body,  {headers} ).subscribe(response => {
       if(response['tipoUsuario'] == "3"){
        // this.presentAlert("Utilize o Menu Avaliador para logar corretamente.", "Caro Avaliador");
@@ -115,20 +115,28 @@ login(){
 
 // Sistema de Cadastror - Se for 1 é Aluno, 2 Não aluno
 cadastrar(){
+  var elemento77 = document.getElementById("labelconectando77");
+    elemento77.hidden = false;
+    var elemento78 = document.getElementById("labelconectando78");
+    elemento78.hidden = false;
   if(this.toggle.checked === true)
   this.tipousuario = "1";
   else
   this.tipousuario = "2";
  var headers = {'contentType': 'application/json','tipoUsuario': this.tipousuario};
- const body = { nome: this.nomeregistrar, email: this.emailregistrar, senha: this.senharegistrar, ra: this.ra, telefone: this.telefone }
+ const body = { nome: this.nomeregistrar.toUpperCase(), email: this.emailregistrar.toLowerCase(), senha: this.senharegistrar, ra: this.ra, telefone: this.telefone }
  this.http.post('https://usuariobackend.azurewebsites.net/usuarios/cadastro', body,  {headers} ).subscribe(response => {
   this.presentAlert("Usuário criado com Sucesso.", "Bem-Vindo")
   this.slides.slidePrev();
+  elemento77.hidden = true;
+  elemento78.hidden = true;
   document.getElementById("idLogin").click();
   this.clicked = false;
  }, error => {
   this.presentAlert(error['error']['mensagem'], "Aconteceu um Erro");
   this.clicked = false;
+  elemento77.hidden = true;
+  elemento78.hidden = true;
  })
 }
 // Metodo para alterar as views, caso seja aluno ou nao.
