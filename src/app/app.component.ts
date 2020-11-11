@@ -19,7 +19,7 @@ export class AppComponent {
   ) {
     this.initializeApp();
     const headers = {'accept': 'application/json'}
-    this.http.get<any>('https://votacaobackend.azurewebsites.net/votos' , { headers }).subscribe(data => {});
+    this.http.get<any>('https://votacaobackend2.azurewebsites.net/votos' , { headers }).subscribe(data => {});
   }
 
   initializeApp() {

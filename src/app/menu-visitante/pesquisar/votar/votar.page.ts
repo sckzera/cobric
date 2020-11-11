@@ -3,6 +3,7 @@ import { UserService } from "../../../services/user.service";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -22,7 +23,7 @@ vetorUser:any;
 idUsuario:any;
 totalVotos = 0;
 tituloTrabalho:string;
-  constructor(private userServ: UserService, private router:Router, public alertController: AlertController, private http: HttpClient) { }
+  constructor(private userServ: UserService, private router:Router, public alertController: AlertController, private http: HttpClient, public loadingController: LoadingController) { }
 
   ngOnInit() {
     this.userServ.serviceData3
@@ -53,34 +54,31 @@ tituloTrabalho:string;
     
   }
   votar(){
-    var elemento = document.getElementById("labelconectando14");
-    elemento.hidden = false;
-    var elemento2 = document.getElementById("labelconectando13");
-    elemento2.hidden = false;
-      var headers = {'contentType': 'application/json'};
-      const body = { idGradeamento: this.idGradeamento, idUsuario: this.idUsuario}
-      this.http.post('https://votacaobackend.azurewebsites.net/votacao', body,  {headers} ).subscribe(response => {
-        var headers = {'contentType': 'application/json'};
-      const body = { idGradeamento: this.idGradeamento, totalVotos: this.totalVotos, tituloTrabalho: this.tituloTrabalho}
-      this.http.post('https://votacaobackend.azurewebsites.net/votos', body,  {headers} ).subscribe(response => {
-        elemento2.hidden = true;
-        elemento.hidden = true;
-        this.presentAlert(this.tituloTrabalho , "Obrigado! Você votou no grupo:");
-        
-      }, error => {
-        elemento2.hidden = true;
-        elemento.hidden = true;
-        this.presentAlert("Por gentileza, entre novamente.", "Aconteceu um Erro");
-        this.router.navigate(['../../home']);
-      })
-        
-     }, error => {
-      elemento2.hidden = true;
-      elemento.hidden = true;
-      this.presentAlert("Se for um erro, contate um Organizador.", "Parece que você já votou neste grupo!");
-      })}
+  this.showLoader();
+    
+    }
      
-  
+  AplicaVoto(){
+    var headers = {'contentType': 'application/json'};
+    const body = { idGradeamento: this.idGradeamento, idUsuario: this.idUsuario}
+    this.http.post('https://votacaobackend2.azurewebsites.net/votacao', body,  {headers} ).subscribe(response => {
+      var headers = {'contentType': 'application/json'};
+    const body = { idGradeamento: this.idGradeamento, totalVotos: this.totalVotos, tituloTrabalho: this.tituloTrabalho}
+    this.http.post('https://votacaobackend2.azurewebsites.net/votos', body,  {headers} ).subscribe(response => {
+      this.hideLoader();
+      this.presentAlert(this.tituloTrabalho , "Obrigado! Você votou no grupo:");
+      
+    }, error => {
+      this.hideLoader();
+      this.presentAlert("Por gentileza, entre novamente.", "Aconteceu um Erro");
+      this.router.navigate(['../../home']);
+    })
+      
+   }, error => {
+     this.hideLoader();
+    this.presentAlert("Se for um erro, contate um Organizador.", "Parece que você já votou neste grupo!");
+    })
+  }
   async presentAlert(mensagemAlerta, tituloAlerta ) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -89,5 +87,27 @@ tituloTrabalho:string;
       buttons: ['OK']
     });
     await alert.present();
+}
+
+showLoader() {
+
+  this.loadingController.create({
+    message: 'Estamos computando o seu voto...'
+  }).then((res) => {
+    res.present();
+    this.AplicaVoto();
+  });
+
+}
+
+hideLoader() {
+
+  this.loadingController.dismiss().then((res) => {
+    console.log('Loading dismissed!', res);
+  }).catch((error) => {
+    this.presentAlert("Aconteceu um erro e não soubemos identificar!", "Nos desculpe");
+    this.router.navigate(['../../../home']);
+  });
+
 }
 }

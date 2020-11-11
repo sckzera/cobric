@@ -16,21 +16,7 @@ export class GradeamentoPage implements OnInit {
   queryText:string;
    
   constructor(private router:Router, private http: HttpClient, public alertController: AlertController, public loadingController: LoadingController) {
-    this.queryText = '';
-    const headers = {'accept': 'application/json'}
-    this.http.get<any>('https://gradeamentobackend.azurewebsites.net/gradeamentos' , { headers }).subscribe(data => {
-      var elemento = document.getElementById("labelconectando99");
-        elemento.hidden = true;
-        var elemento2 = document.getElementById("labelconectando98");
-        elemento2.hidden = true;
-      this.presentLoading("start");
-        this.trabalhos = data;
-        this.alltrabalhos = this.trabalhos; 
-        
-       }, error => {
-      this.presentAlert("Desculpe, não conseguimos consultar os dados!", "Aconteceu um Erro");
-      this.router.navigate(['../menu-visitante']);
-    });
+    this.showLoader();
  }
  // Metodo de Alerta.
  async presentAlert(mensagemAlerta, tituloAlerta ) {
@@ -57,6 +43,21 @@ else{
 }
 }
 
+CarregaLista(){
+  this.queryText = '';
+    const headers = {'accept': 'application/json'}
+    this.http.get<any>('https://gradeamentobackend2.azurewebsites.net/gradeamentos' , { headers }).subscribe(data => {
+
+        this.trabalhos = data;
+        this.alltrabalhos = this.trabalhos; 
+        this.hideLoader();
+       }, error => {
+      this.hideLoader();
+      this.presentAlert("Desculpe, não conseguimos consultar os dados!", "Aconteceu um Erro");
+      this.router.navigate(['../menu-visitante']);
+    });
+}
+
   ngOnInit() {
   }
 // Metodo para filtrar no buscar
@@ -74,6 +75,28 @@ else{
     }
   voltarMenu(){
     this.router.navigate(['../menu-visitante']);
+  }
+
+  showLoader() {
+
+    this.loadingController.create({
+      message: 'Estamos consultando os dados...'
+    }).then((res) => {
+      res.present();
+      this.CarregaLista();
+    });
+  
+  }
+  
+  hideLoader() {
+  
+    this.loadingController.dismiss().then((res) => {
+      console.log('Loading dismissed!', res);
+    }).catch((error) => {
+      this.presentAlert("Aconteceu um erro e não soubemos identificar!", "Nos desculpe");
+    this.router.navigate(['../../home']);
+    });
+  
   }
 }
 

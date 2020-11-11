@@ -26,10 +26,14 @@
           <ion-input [(ngModel)]="passwordLogin" type="password" placeholder="Senha"></ion-input>
         </ion-item>
         <p></p>
+        <ion-label class="esqSenha" (click)="EsqueceuSenha()" >Esqueceu a senha?</ion-label>
+        <p></p>
         <ion-label id="labelconectando2" hidden="true">Você está logando...</ion-label>
         <p></p>
         <ion-spinner id="labelconectando" hidden="true"></ion-spinner>
-        <ion-button (click)="login()" expand="block">
+        <p></p>
+
+        <ion-button class="loginBotao" (click)="login()" expand="block">
           Entrar
         </ion-button>
       </div>
@@ -52,7 +56,7 @@
               <ion-input type="text" formControlName="email" placeholder="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" [(ngModel)]="emailregistrar" ></ion-input>
             </ion-item>
               <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                  <div class="divErro" *ngIf="f.email.errors.required">Email é obrigatorio</div>
+                  <div class="divErro" *ngIf="f.email.errors.required">E-mail é obrigatorio</div>
                   <div class="divErro" *ngIf="f.email.errors.pattern">Digite um e-mail valido</div>
               </div>
           </div>

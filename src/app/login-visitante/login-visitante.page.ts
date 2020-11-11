@@ -29,6 +29,7 @@ mensagemAlerta:string;
 tituloAlerta:string;
 registerForm: FormGroup;
 submitted = false;
+recuperarSenha:string;
 constructor(private http: HttpClient, public alertController: AlertController, private router:Router, private userServ: UserService, private formBuilder: FormBuilder) {
 }
 
@@ -91,7 +92,7 @@ login(){
   elemento2.hidden = false;
     var headers = {'contentType': 'application/json'};
     const body = { email: this.emailLogin.toLowerCase(), senha: this.passwordLogin}
-    this.http.post('https://usuariobackend.azurewebsites.net/usuarios/login', body,  {headers} ).subscribe(response => {
+    this.http.post('https://usuariosbackend2.azurewebsites.net/usuarios/login', body,  {headers} ).subscribe(response => {
       if(response['tipoUsuario'] == "3"){
        // this.presentAlert("Utilize o Menu Avaliador para logar corretamente.", "Caro Avaliador");
        // this.router.navigate(['../menu-avaliador']);
@@ -125,7 +126,7 @@ cadastrar(){
   this.tipousuario = "2";
  var headers = {'contentType': 'application/json','tipoUsuario': this.tipousuario};
  const body = { nome: this.nomeregistrar.toUpperCase(), email: this.emailregistrar.toLowerCase(), senha: this.senharegistrar, ra: this.ra, telefone: this.telefone }
- this.http.post('https://usuariobackend.azurewebsites.net/usuarios/cadastro', body,  {headers} ).subscribe(response => {
+ this.http.post('https://usuariosbackend2.azurewebsites.net/usuarios/cadastro', body,  {headers} ).subscribe(response => {
   this.presentAlert("Usuário criado com Sucesso.", "Bem-Vindo")
   this.slides.slidePrev();
   elemento77.hidden = true;
@@ -161,5 +162,50 @@ cadastrar(){
     
   }
 
+  EsqueceuSenha(){
+   this.presentAlertConfirm()
 
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Recuperação de Senha',
+      message: 'Por favor, informe o seu e-mail abaixo para que seja enviado um e-mail contendo a sua senha',
+      inputs: [
+        {
+          name: 'name1',
+          type: 'text',
+          placeholder: 'Digite seu e-mail'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Não',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+          }
+        }, {
+          text: 'Sim',
+          handler: data => {
+            const body = { destino: data.name1.toLowerCase() }
+            this.http.post('https://usuariosbackend2.azurewebsites.net/usuarios/recuperar', body ).subscribe(response => {
+              this.presentAlert("Senha enviado para :" + body.destino, "E-mail de Recuperação enviado com Sucesso");
+           
+          
+        },error => {
+      if(error['error'] == null){
+        this.presentAlert("Desculpa mas não conseguimos identificar o erro.", "Aconteceu um Erro");
+      }
+      else{
+        this.presentAlert(error['error'], "Aconteceu um Erro");
+      }
+        })
+      }}
+      ]
+    });
+  
+    await alert.present();
+  }
 }

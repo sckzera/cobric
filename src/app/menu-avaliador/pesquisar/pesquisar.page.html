@@ -24,11 +24,6 @@
 
 
 <ion-content>
-  <div class="divCarregando">
-  <ion-label id="labelconectando5">Carregando...</ion-label>
-        <p></p>
-        <ion-spinner id="labelconectando4"></ion-spinner>
-      </div>
   <ion-list lines="full">
     <ion-item *ngFor="let trabalho of trabalhos">
       <button (click)="SelecionaTrabalho(trabalho)">{{trabalho.titulo}}</button>
