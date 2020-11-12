@@ -62,7 +62,7 @@ export class LoginAvaliadorPage implements OnInit {
     elemento.hidden = false;
     var elemento2 = document.getElementById("labelconectando2");
     elemento2.hidden = false;
-      var headers = {'contentType': 'application/json'};
+      var headers = {'accept': '*/*', 'Content-Type': 'application/json'};
       const body = { email: this.emailLogin, senha: this.passwordLogin}
       this.http.post('https://usuariosbackend2.azurewebsites.net/usuarios/login', body,  {headers} ).subscribe(response => {
         if(response['tipoUsuario'] == "3"){

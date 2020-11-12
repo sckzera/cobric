@@ -11,7 +11,7 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./gradeamento-avaliador.page.scss'],
 })
 export class GradeamentoAvaliadorPage implements OnInit {
-  trabalhos: Array<{titulo: string, codigo: string, autores:string, orientador:string, data:string}>
+  trabalhos: Array<{titulo: string, codigo: string, autor:string, orientador:string, data:string}>
   alltrabalhos:any;
   queryText:string;
    
@@ -92,7 +92,7 @@ hideLoader() {
     if(val && val.trim() != ''){
       this.trabalhos = _.values(this.alltrabalhos);
       this.trabalhos = this.trabalhos.filter((trabalho) => {
-        return (trabalho.titulo.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return ((trabalho.titulo.toLowerCase().indexOf(val.toLowerCase()) > -1) || (trabalho.autor.toLowerCase().indexOf(val.toLowerCase()) > -1) || (trabalho.orientador.toLowerCase().indexOf(val.toLowerCase()) > -1) || (trabalho.codigo.toLowerCase().indexOf(val.toLowerCase()) > -1)  );
       })
     }
     else{

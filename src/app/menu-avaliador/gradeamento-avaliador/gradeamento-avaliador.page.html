@@ -2,7 +2,7 @@
   <ion-toolbar>
     <button class="cssbutao" (click)="voltarMenu()"><ion-icon name="arrow-back-outline"></ion-icon></button>
     <ion-title>{{tituloGlobal | uppercase}}</ion-title>
-    <ion-searchbar  class="cssBusca" placeholder="Pesquisar o Título do trabalho" [(ngModel)]="queryText" 
+    <ion-searchbar  class="cssBusca" placeholder="Pesquise por título ou código do trabalho" [(ngModel)]="queryText" 
     (ionInput)="filterTrabalho($event)" clearinput></ion-searchbar> 
   </ion-toolbar>
 </ion-header>

@@ -86,29 +86,34 @@ constructor(private http: HttpClient, public alertController: AlertController, p
 }
 // Sistema de Login
 login(){
-  var elemento = document.getElementById("labelconectando");
-  elemento.hidden = false;
-  var elemento2 = document.getElementById("labelconectando2");
-  elemento2.hidden = false;
-    var headers = {'contentType': 'application/json'};
-    const body = { email: this.emailLogin.toLowerCase(), senha: this.passwordLogin}
-    this.http.post('https://usuariosbackend2.azurewebsites.net/usuarios/login', body,  {headers} ).subscribe(response => {
-      if(response['tipoUsuario'] == "3"){
-       // this.presentAlert("Utilize o Menu Avaliador para logar corretamente.", "Caro Avaliador");
-       // this.router.navigate(['../menu-avaliador']);
-       // this.userServ.changeData(response['nome'],response['idUsuario']);
+      var elemento = document.getElementById("labelconectando");
+      elemento.hidden = false;
+      var elemento2 = document.getElementById("labelconectando2");
+      elemento2.hidden = false;
+      if(this.emailLogin == null){
+        this.presentAlert("É necessário o preenchimento do E-mail", "Erro");
+        elemento.hidden = true;
+        elemento2.hidden = true;
       }else{
-       // Caso o Login conferir, redirecionando, e salvando os dados.
-       this.router.navigate(['../menu-visitante']);
-       this.userServ.changeData(response['nome'],response['idUsuario']);
-  
-      }
-    }, error => {
-      this.presentAlert(error['error']['mensagem'], "Aconteceu um Erro");
-      elemento.hidden = true;
-      elemento2.hidden = true;
-    })
-  }
+        var headers = {'contentType': 'application/json'};
+        const body = { email: this.emailLogin.toLowerCase(), senha: this.passwordLogin}
+        this.http.post('https://usuariosbackend2.azurewebsites.net/usuarios/login', body,  {headers} ).subscribe(response => {
+          if(response['tipoUsuario'] == "3"){
+           // this.presentAlert("Utilize o Menu Avaliador para logar corretamente.", "Caro Avaliador");
+           // this.router.navigate(['../menu-avaliador']);
+           // this.userServ.changeData(response['nome'],response['idUsuario']);
+          }else{
+           // Caso o Login conferir, redirecionando, e salvando os dados.
+           this.router.navigate(['../menu-visitante']);
+           this.userServ.changeData(response['nome'],response['idUsuario']);
+      
+          }
+        }, error => {
+          this.presentAlert(error['error']['mensagem'], "Aconteceu um Erro");
+          elemento.hidden = true;
+          elemento2.hidden = true;
+        })}
+}
 
   actionMethod(){
     this.cadastrar();
@@ -124,7 +129,7 @@ cadastrar(){
   this.tipousuario = "1";
   else
   this.tipousuario = "2";
- var headers = {'contentType': 'application/json','tipoUsuario': this.tipousuario};
+ var headers = {'accept': '*/*', 'Content-Type': 'application/json','tipoUsuario': this.tipousuario};
  const body = { nome: this.nomeregistrar.toUpperCase(), email: this.emailregistrar.toLowerCase(), senha: this.senharegistrar, ra: this.ra, telefone: this.telefone }
  this.http.post('https://usuariosbackend2.azurewebsites.net/usuarios/cadastro', body,  {headers} ).subscribe(response => {
   this.presentAlert("Usuário criado com Sucesso.", "Bem-Vindo")
